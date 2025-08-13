@@ -1,7 +1,7 @@
-20 Games Challenge (https://20_games_challenge.gitlab.io/challenge/) - Game 6: Super Mario
+# 20 Games Challenge (https://20_games_challenge.gitlab.io/challenge/) - Game 6: Super Mario
 
-Goals:
-* Create a 2D character controller. Mario should be able to walk, run, and jump.
+### Goals:
+- Create a 2D character controller. Mario should be able to walk, run, and jump.
 - Create a single level. You can make world 1-1, or design your own level. The level should be made up of textured tiles. There will also be some special elements:
 - Add “question mark” boxes. These will contain coins or power ups.
 - Add warp pipes. Mario should be able to enter these by pressing the “down” button. He will exit a pipe somewhere else on the map.
@@ -11,7 +11,7 @@ Goals:
 - Make your own sprites, sound effects, and music. Pay special attention to the artwork for repeating tiles, pattern should look good when repeated.
 - Add a life counter and level timer. Mario will die if the timer reaches zero before he finds the level exit.
 
-Stretch Goals:
+### Stretch Goals:
 - Make all of the background art for the level.
 - Make an animated sequence at the end of the level. Touching the flagpole should cause the flag to drop before Mario walks into the castle, exiting the level.
 - Make some more levels. Re-make an entire world, or design your own levels.
