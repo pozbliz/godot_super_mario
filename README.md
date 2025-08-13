@@ -1,4 +1,6 @@
-# 20 Games Challenge (https://20_games_challenge.gitlab.io/challenge/) - Game 6: Super Mario
+# 20 Games Challenge - Game 6: Super Mario
+
+https://20_games_challenge.gitlab.io/challenge/
 
 ### Goals:
 - Create a 2D character controller. Mario should be able to walk, run, and jump.
