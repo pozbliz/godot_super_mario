@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="super_mario"
+run/main_scene="uid://cnbgjoxenlktl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 EventBus="*res://util/event_bus.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [input]
 
