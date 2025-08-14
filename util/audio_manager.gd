@@ -6,6 +6,20 @@ var bus = "master"
 var available = []  # The available players.
 var queue = []  # The queue of sounds to play.
 
+var player_sounds = {
+	"player_hit": "file",
+	"player_died": "file",
+}
+
+var enemy_sounds = {
+	"enemy_hit": "file",
+	"enemy_died": "file",
+}
+
+var world_sounds = {
+	"a": "file",
+}
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -16,6 +30,10 @@ func _ready():
 		available.append(player)
 		player.finished.connect(_on_stream_finished.bind(player))
 		player.bus = bus
+		
+	# EventBus signals
+	EventBus.player_hit.connect(_on_player_hit)
+	EventBus.player_died.connect(_on_player_died)
 		
 func _on_stream_finished(stream):
 	available.append(stream)
@@ -50,3 +68,18 @@ func _process(_delta):
 		player.bus = sound_data.bus
 		
 		player.play()
+
+
+###### Specific functions per signal ######
+
+### PLAYER ###
+func _on_player_hit():
+	play(player_sounds.player_hit)
+
+func _on_player_died():
+	play(player_sounds.player_died)
+	
+### ENEMIES ###
+
+
+### WORLD ###
