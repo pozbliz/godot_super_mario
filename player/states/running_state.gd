@@ -16,12 +16,15 @@ func handle_input(_event: InputEvent) -> void:
 		
 	elif player.get_input_axis() == 0:
 		state_machine.change_state(player.states.idle)
+		
+	elif Input.is_action_just_pressed("duck"):
+		state_machine.change_state(player.states.duck)
 
 func physics_update(delta: float) -> void:
-	player.velocity.x = player.run_speed * player.direction
+	player.velocity.x = player.run_speed * player.direction.x.normalized()
 	player.velocity.y += player.gravity * delta
 	
-	if not player.is_on_floor():
+	if not player.is_on_floor() and player.velocity.y > 0.0:
 		state_machine.change_state(player.states.fall)
 		
 	player.move_and_slide()

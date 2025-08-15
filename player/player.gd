@@ -22,3 +22,5 @@ var direction: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	state_machine.change_state(states.idle)
 	
+func _on_death():
+	EventBus.player.player_died.emit()
