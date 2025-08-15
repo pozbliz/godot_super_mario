@@ -7,7 +7,12 @@ func enter():
 
 func physics_update(delta: float) -> void:
 	player.input_direction_x = Input.get_axis("move_left", "move_right")
-	player.velocity.x = player.speed * player.input_direction_x
+	if player.input_direction_x != 0:
+		player.velocity.x = lerp(
+			player.velocity.x, 
+			player.speed * player.input_direction_x, 
+			player.acceleration
+		)
 	player.velocity.y += player.gravity * delta
 		
 	player.move_and_slide()

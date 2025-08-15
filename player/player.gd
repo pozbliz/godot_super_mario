@@ -5,8 +5,7 @@ extends CharacterBody2D
 @export var speed: float = 300.0
 @export var jump_velocity: float = -700.0
 @export var gravity: float = 1500.0
-@export var friction: float = 0.20
-@export var acceleration: float = 0.20
+@export var acceleration: float = 0.2
 @export var coyote_time: float = 0.1
 
 var coyote_timer: float = 0.0
