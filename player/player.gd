@@ -7,9 +7,12 @@ extends CharacterBody2D
 @export var gravity: float = 1500.0
 @export var acceleration: float = 0.2
 @export var coyote_time: float = 0.1
+@export var max_jump_hold_time: float = 0.2
 
 var coyote_timer: float = 0.0
 var input_direction_x: float
+var jump_held_time: float = 0.0
+var is_jumping: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine = $StateMachine

@@ -12,11 +12,22 @@ func handle_input(_event: InputEvent) -> void:
 	
 func enter():
 	player.velocity.y = player.jump_velocity
+	player.jump_held_time = 0.0
+	player.is_jumping = true
 	#player.sprite.play("jump")
 	
 func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * player.input_direction_x
 	player.velocity.y += player.gravity * delta
+	
+	if player.is_jumping:
+		player.jump_held_time += delta
+		if not Input.is_action_pressed("jump") and player.velocity.y < 0:
+			player.velocity.y *= 0.5
+			player.is_jumping = false
+		elif player.jump_held_time >= player.max_jump_hold_time:
+			player.is_jumping = false
+	
 	player.move_and_slide()
 
 	if not player.is_on_floor() and player.velocity.y >= 0:
