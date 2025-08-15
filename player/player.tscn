@@ -26,21 +26,20 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_rkbax")
-initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_boad6")
 
-[node name="Jump" type="Node2D" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("4_rgyib")
 
-[node name="Fall" type="Node2D" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("5_hg6s5")
 
-[node name="Run" type="Node2D" parent="StateMachine"]
+[node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("6_8t03j")
 
-[node name="Duck" type="Node2D" parent="StateMachine"]
+[node name="Duck" type="Node" parent="StateMachine"]
 script = ExtResource("7_2ieo8")

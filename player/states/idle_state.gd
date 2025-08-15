@@ -1,11 +1,19 @@
 extends State
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func enter():
+	player.velocity.x = 0.0
+	#player.sprite.play("idle")
 
+func physics_update(_delta: float) -> void:
+	player.velocity.y += player.gravity * _delta
+	player.move_and_slide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	if not player.is_on_floor():
+		state_machine.change_state(player.states.fall)
+	elif Input.is_action_just_pressed("jump"):
+		state_machine.change_state(player.states.jump)
+	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		state_machine.change_state(player.states.run)
+	elif Input.is_action_just_pressed("duck"):
+		state_machine.change_state(player.states.duck)
