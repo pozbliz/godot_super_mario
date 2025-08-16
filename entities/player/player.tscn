@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://csxc6u0b75g7s"]
+[gd_scene load_steps=14 format=3 uid="uid://csxc6u0b75g7s"]
 
 [ext_resource type="Script" uid="uid://mh4l7l3pwbud" path="res://entities/player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://c2pcuwflfly0e" path="res://entities/player/states/state_machine.gd" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://b23mi6ll4lfv8" path="res://entities/player/states/idle_state.gd" id="3_boad6"]
 [ext_resource type="Script" uid="uid://b86lnlvnoqxbt" path="res://entities/player/states/jumping_state.gd" id="4_rgyib"]
+[ext_resource type="Script" uid="uid://b682hrgg16uv4" path="res://entities/components/hitbox_component.gd" id="4_wvtmh"]
 [ext_resource type="Script" uid="uid://yci27g7mgxl6" path="res://entities/player/states/falling_state.gd" id="5_hg6s5"]
 [ext_resource type="Script" uid="uid://dcajlibqxs28i" path="res://entities/player/states/running_state.gd" id="6_8t03j"]
 [ext_resource type="Script" uid="uid://cvik7bbxdfkah" path="res://entities/player/states/ducking_state.gd" id="7_2ieo8"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="8_bectd"]
-[ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hitbox_component.tscn" id="9_wvtmh"]
+[ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="9_wvtmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvtmh"]
 size = Vector2(40, 40)
@@ -16,9 +17,16 @@ size = Vector2(40, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bectd"]
 size = Vector2(40, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7thud"]
+size = Vector2(40, 40)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(332, 355)
+collision_mask = 14
 script = ExtResource("1_oul6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvtmh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
@@ -28,16 +36,23 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wvtmh")
-
 [node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_wvtmh")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_wvtmh")]
+collision_layer = 16
+collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_bectd")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("4_wvtmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_7thud")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_rkbax")

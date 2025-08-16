@@ -7,8 +7,8 @@ signal enemy_died
 
 func _ready() -> void:
 	add_to_group("enemy")
-	if $AnimatedSprite2D:
-		$AnimatedSprite2D.play("default")
+	#if $AnimatedSprite2D:
+		#$AnimatedSprite2D.play("default")
 
 func _process(delta: float) -> void:
 	pass

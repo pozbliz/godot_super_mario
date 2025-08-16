@@ -1,17 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvh0f3kkaxavg"]
+[gd_scene load_steps=8 format=3 uid="uid://cvh0f3kkaxavg"]
 
 [ext_resource type="Script" uid="uid://h6h2r652sh3h" path="res://entities/enemies/enemy.gd" id="1_5lf1o"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="1_wqcwe"]
-[ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hitbox_component.tscn" id="2_5lf1o"]
+[ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="2_5lf1o"]
+[ext_resource type="PackedScene" uid="uid://cyyq4u4vmmtnl" path="res://entities/components/hitbox_component.tscn" id="4_msovg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf1o"]
 size = Vector2(40, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_msovg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twyc1"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4yt1"]
 size = Vector2(40, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_5lf1o")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5lf1o")
@@ -19,23 +26,24 @@ shape = SubResource("RectangleShape2D_5lf1o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.603848, 0.262665, 0.262207, 1)
+color = Color(0.820973, 0.186851, 0.179971, 1)
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5lf1o")]
-health_component = NodePath("../HealthComponent")
+[node name="HurtboxComponent" parent="." instance=ExtResource("2_5lf1o")]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_twyc1")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_msovg")]
+collision_layer = 32
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("RectangleShape2D_msovg")
+shape = SubResource("RectangleShape2D_w4yt1")
