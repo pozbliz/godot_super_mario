@@ -13,4 +13,4 @@ func damage(attack: Attack):
 	health -= attack.attack_damage
 	
 	if health <= 0:
-		await get_parent().play_death_animation()
+		await get_parent()._on_death()

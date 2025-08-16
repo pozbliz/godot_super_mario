@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvh0f3kkaxavg"]
+[gd_scene load_steps=6 format=3 uid="uid://cvh0f3kkaxavg"]
 
 [ext_resource type="Script" uid="uid://h6h2r652sh3h" path="res://entities/enemies/enemy.gd" id="1_5lf1o"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="1_wqcwe"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hitbox_component.tscn" id="2_5lf1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf1o"]
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msovg"]
 size = Vector2(40, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5lf1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5lf1o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
@@ -28,7 +34,8 @@ color = Color(0.603848, 0.262665, 0.262207, 1)
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 
-[node name="HitboxComponent" parent="." instance=ExtResource("2_5lf1o")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5lf1o")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_msovg")

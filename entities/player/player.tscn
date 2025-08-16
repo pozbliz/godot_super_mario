@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csxc6u0b75g7s"]
+[gd_scene load_steps=12 format=3 uid="uid://csxc6u0b75g7s"]
 
 [ext_resource type="Script" uid="uid://mh4l7l3pwbud" path="res://entities/player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://c2pcuwflfly0e" path="res://entities/player/states/state_machine.gd" id="2_rkbax"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://cvik7bbxdfkah" path="res://entities/player/states/ducking_state.gd" id="7_2ieo8"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="8_bectd"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hitbox_component.tscn" id="9_wvtmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvtmh"]
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bectd"]
 size = Vector2(40, 40)
@@ -24,6 +27,9 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvtmh")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
 
