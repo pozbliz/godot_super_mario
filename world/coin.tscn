@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftwfv"]
 
 [node name="Coin" type="Area2D"]
+collision_layer = 64
 script = ExtResource("1_x1uf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

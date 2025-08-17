@@ -5,7 +5,7 @@ extends Area2D
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func _on_body_entered(body: CharacterBody2D) -> void:
@@ -13,9 +13,9 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	if not body is Player:
 		return
 	
-	apply_effect(body)
+	_on_powerup_pickup()
 	EventBus.world.powerup_picked_up.emit(self)
 	queue_free()
 	
-func apply_effect(player: Player):
+func _on_powerup_pickup():
 	pass

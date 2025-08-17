@@ -28,7 +28,7 @@ var is_jumping: bool = false
 func _ready() -> void:
 	state_machine.change_state(states.idle)
 	
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if get_tree().paused:
 		return
 	
