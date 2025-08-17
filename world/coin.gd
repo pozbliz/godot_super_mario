@@ -1,5 +1,5 @@
 class_name Coin
-extends PowerUp
+extends Area2D
 
 
 func _on_powerup_pickup():

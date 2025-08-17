@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://deqpw5d6el03l"]
+
+[ext_resource type="Script" uid="uid://d0av77jd4eg7l" path="res://entities/components/pickup_component.gd" id="1_qo08f"]
+
+[node name="PickupComponent" type="Node"]
+script = ExtResource("1_qo08f")

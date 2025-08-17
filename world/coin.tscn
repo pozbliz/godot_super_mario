@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://wr2mf0tbuie3"]
 
-[ext_resource type="Script" uid="uid://ds81k6odbsypn" path="res://world/power_up.gd" id="1_x1uf4"]
+[ext_resource type="PackedScene" uid="uid://deqpw5d6el03l" path="res://entities/components/pickup_component.tscn" id="2_14q8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftwfv"]
 
 [node name="Coin" type="Area2D"]
 collision_layer = 64
-script = ExtResource("1_x1uf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ftwfv")
+
+[node name="PickupComponent" parent="." node_paths=PackedStringArray("collision_area") instance=ExtResource("2_14q8p")]
+collision_area = NodePath("..")
