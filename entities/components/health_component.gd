@@ -3,14 +3,15 @@ extends Node
 
 
 @export var MAX_HEALTH: float = 1.0
-var health: float
+
+var current_health: float
 
 func _ready() -> void:
-	health = MAX_HEALTH
-
+	current_health = MAX_HEALTH
 
 func damage(attack: Attack):
-	health -= attack.attack_damage
+	current_health -= attack.attack_damage
+	print("current health: ", current_health)
 	
-	if health <= 0:
+	if current_health <= 0:
 		await get_parent()._on_death()

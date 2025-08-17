@@ -34,9 +34,10 @@ color = Color(0.820973, 0.186851, 0.179971, 1)
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 
-[node name="HurtboxComponent" parent="." instance=ExtResource("2_5lf1o")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5lf1o")]
 collision_layer = 16
 collision_mask = 32
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_twyc1")
