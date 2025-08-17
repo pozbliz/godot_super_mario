@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://rsf1gj13uurf"]
+
+[ext_resource type="Script" uid="uid://ds81k6odbsypn" path="res://world/power_up.gd" id="1_l8q7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftwfv"]
+
+[node name="Mushroom" type="Area2D"]
+script = ExtResource("1_l8q7w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ftwfv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.100394, 0.628056, 0.610977, 1)
