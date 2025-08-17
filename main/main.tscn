@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnbgjoxenlktl"]
+[gd_scene load_steps=6 format=3 uid="uid://cnbgjoxenlktl"]
 
 [ext_resource type="Script" uid="uid://y2j6ea6ia8rh" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://xw2vx8ei4mx3" path="res://world/level.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://csxc6u0b75g7s" path="res://entities/player/player.tscn" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://cvh0f3kkaxavg" path="res://entities/enemies/enemy.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://dhuy7l8t6egew" path="res://world/powerup_block.tscn" id="5_3wy1v"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_53q0u")
@@ -14,3 +15,6 @@ script = ExtResource("1_53q0u")
 
 [node name="Enemy" parent="." instance=ExtResource("4_c651c")]
 position = Vector2(713, 452)
+
+[node name="PowerupBlock" parent="." instance=ExtResource("5_3wy1v")]
+position = Vector2(451, 391)

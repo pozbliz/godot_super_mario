@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_death():
-	print("enemy dying")
 	if $AnimatedSprite2D:
 		$AnimatedSprite2D.play("death")
 		$HitboxComponent/CollisionShape2D.disabled = true

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhuy7l8t6egew"]
+
+[ext_resource type="Script" uid="uid://d127kmfsipyqb" path="res://world/powerup_block.gd" id="1_qhm7j"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ejdla"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhm7j"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejdla"]
+size = Vector2(32, 2)
+
+[node name="PowerupBlock" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_qhm7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_ejdla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qhm7j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="BottomCollisionZone" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_ejdla")

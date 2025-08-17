@@ -11,7 +11,6 @@ func _ready() -> void:
 
 func damage(attack: Attack):
 	current_health -= attack.attack_damage
-	print("current health: ", current_health)
 	
 	if current_health <= 0:
 		await get_parent()._on_death()
