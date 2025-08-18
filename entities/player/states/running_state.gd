@@ -2,8 +2,7 @@ extends State
 
 
 func enter():
-	#player.sprite.play("run")
-	pass
+	player.play_animation("run")
 
 func physics_update(delta: float) -> void:
 	player.input_direction_x = Input.get_axis("move_left", "move_right")

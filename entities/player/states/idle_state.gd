@@ -3,7 +3,7 @@ extends State
 
 func enter():
 	player.velocity.x = 0.0
-	#player.sprite.play("idle")
+	player.play_animation("idle")
 
 func physics_update(_delta: float) -> void:
 	player.velocity.y += player.gravity * _delta

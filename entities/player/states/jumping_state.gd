@@ -14,7 +14,7 @@ func enter():
 	player.velocity.y = player.jump_velocity
 	player.jump_held_time = 0.0
 	player.is_jumping = true
-	#player.sprite.play("jump")
+	player.play_animation("jump")
 	
 func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * player.input_direction_x
