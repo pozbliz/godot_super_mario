@@ -13,5 +13,7 @@ func _on_hurtbox_component_area_entered(area: Area2D) -> void:
 		if area.owner == get_parent():
 			return
 			
+		print("area that has entered: ", area)
+		print("area owner: ", area.owner)
 		health_component.damage(area.attack())
 	

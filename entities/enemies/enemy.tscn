@@ -1,36 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvh0f3kkaxavg"]
+[gd_scene load_steps=10 format=3 uid="uid://cvh0f3kkaxavg"]
 
 [ext_resource type="Script" uid="uid://h6h2r652sh3h" path="res://entities/enemies/enemy.gd" id="1_5lf1o"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="1_wqcwe"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="2_5lf1o"]
+[ext_resource type="Texture2D" uid="uid://bhvdugx8wq4v8" path="res://assets/slime.png" id="2_twyc1"]
 [ext_resource type="PackedScene" uid="uid://cyyq4u4vmmtnl" path="res://entities/components/hitbox_component.tscn" id="4_msovg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf1o"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4yt1"]
+radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_twyc1"]
-size = Vector2(32, 32)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipr6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_twyc1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4yt1"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gj3y3"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56i32"]
+radius = 12.0
 
 [node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_5lf1o")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5lf1o")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_w4yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.820973, 0.186851, 0.179971, 1)
+sprite_frames = SubResource("SpriteFrames_ipr6v")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 
@@ -40,11 +48,13 @@ collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-shape = SubResource("RectangleShape2D_twyc1")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_gj3y3")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_msovg")]
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("RectangleShape2D_w4yt1")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_56i32")
