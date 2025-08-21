@@ -14,7 +14,7 @@ var input_direction_x: float
 var jump_held_time: float = 0.0
 var is_jumping: bool = false
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var states = {
@@ -38,6 +38,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 func grow():
 	if growth_stage == 0:
 		growth_stage += 1
+		
+func shrink():
+	if growth_stage == 1:
+		growth_stage -= 1
 		
 func play_animation(action: String):
 	var animation = "%s_stage%d" % [action, growth_stage]
