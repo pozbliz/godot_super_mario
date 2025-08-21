@@ -38,23 +38,36 @@ var animation_map = {
 func _ready() -> void:
 	state_machine.change_state(states.idle)
 	EventBus.world.mushroom_picked_up.connect(grow)
+	$HurtboxComponent.area_entered.connect(_on_hurtbox_entered)
 	
 func _unhandled_input(_event: InputEvent) -> void:
 	if get_tree().paused:
 		return
 		
-func grow():
-	if growth_stage == 0:
-		growth_stage += 1
+func grow() -> void:
+	growth_stage += 1
+	clamp(growth_stage, 0, 1)
+	animation_player.play("grow")
 		
-func shrink():
-	if growth_stage == 1:
-		growth_stage -= 1
+func shrink() -> void:
+	growth_stage -= 1
+	clamp(growth_stage, 0, 1)
+	animation_player.play("shrink")
 		
-func play_animation(action: String):
+func play_animation(action: String) -> void:
 	var animation = animation_map[action][growth_stage]
 	sprite.play(animation)
-	print("playing animation: ", animation)
 	
-func die():
+func _on_hurtbox_entered(body: CharacterBody2D) -> void:
+	if body is Enemy:
+		take_damage()
+	
+func take_damage() -> void:
+	if growth_stage >= 1:
+		shrink()
+	else:
+		die()
+	
+func die() -> void:
 	EventBus.player.player_died.emit()
+	# TODO: add death animation

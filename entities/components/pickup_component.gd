@@ -9,7 +9,6 @@ func _ready() -> void:
 	collision_area.body_entered.connect(_on_collision_area_body_entered)
 
 func _on_collision_area_body_entered(body: CharacterBody2D) -> void:
-	print("powerup picked up")
 	if not body is Player:
 		return
 	
