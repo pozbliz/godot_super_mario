@@ -8,6 +8,11 @@ func physics_update(delta: float) -> void:
 	player.input_direction_x = Input.get_axis("move_left", "move_right")
 	player.velocity.x = player.speed * player.input_direction_x
 	player.velocity.y += player.gravity * delta
+	
+	if player.input_direction_x != 0:
+		player.facing_direction_x = player.input_direction_x
+	player.sprite.flip_h = player.facing_direction_x < 0
+	
 	player.move_and_slide()
 
 	if player.is_on_floor():

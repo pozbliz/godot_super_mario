@@ -13,6 +13,8 @@ script = ExtResource("1_53q0u")
 [node name="Level" parent="." instance=ExtResource("2_xwkvk")]
 
 [node name="Player" parent="." instance=ExtResource("3_c651c")]
+texture_filter = 1
+scale = Vector2(2, 2)
 
 [node name="Enemy" parent="." instance=ExtResource("4_c651c")]
 position = Vector2(713, 452)

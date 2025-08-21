@@ -11,8 +11,16 @@ extends CharacterBody2D
 
 var coyote_timer: float = 0.0
 var input_direction_x: float
+var facing_direction_x: float = 1.0
 var jump_held_time: float = 0.0
 var is_jumping: bool = false
+var animation_map = {
+	"idle": ["small_idle", "big_idle"],
+	"run":  ["small_run", "big_run"],
+	"jump": ["small_jump", "big_jump"],
+	"fall": ["small_fall", "big_fall"],
+	"duck": ["small_duck", "big_duck"]
+}
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -44,8 +52,9 @@ func shrink():
 		growth_stage -= 1
 		
 func play_animation(action: String):
-	var animation = "%s_stage%d" % [action, growth_stage]
-	animation_player.play(animation)
+	var animation = animation_map[action][growth_stage]
+	sprite.play(animation)
+	print("playing animation: ", animation)
 	
-func _on_death():
+func die():
 	EventBus.player.player_died.emit()

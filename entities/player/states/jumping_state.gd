@@ -27,6 +27,10 @@ func physics_update(delta: float) -> void:
 			player.is_jumping = false
 		elif player.jump_held_time >= player.max_jump_hold_time:
 			player.is_jumping = false
+			
+	if player.input_direction_x != 0:
+		player.facing_direction_x = player.input_direction_x
+	player.sprite.flip_h = player.facing_direction_x < 0
 	
 	player.move_and_slide()
 
