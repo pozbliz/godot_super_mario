@@ -13,5 +13,5 @@ func _on_hurtbox_component_area_entered(area: Area2D) -> void:
 		if area.owner == get_parent():
 			return
 			
-		health_component.damage(area.get_attack())
+		health_component.damage(area.attack())
 	

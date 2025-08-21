@@ -38,7 +38,6 @@ var animation_map = {
 func _ready() -> void:
 	state_machine.change_state(states.idle)
 	EventBus.world.mushroom_picked_up.connect(grow)
-	$HurtboxComponent.area_entered.connect(_on_hurtbox_entered)
 	
 func _unhandled_input(_event: InputEvent) -> void:
 	if get_tree().paused:
@@ -47,6 +46,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 func grow() -> void:
 	growth_stage += 1
 	clamp(growth_stage, 0, 1)
+	$HealthComponent.max_health = 2
+	$HealthComponent.current_health = 2
 	animation_player.play("grow")
 		
 func shrink() -> void:
@@ -57,10 +58,6 @@ func shrink() -> void:
 func play_animation(action: String) -> void:
 	var animation = animation_map[action][growth_stage]
 	sprite.play(animation)
-	
-func _on_hurtbox_entered(body: CharacterBody2D) -> void:
-	if body is Enemy:
-		take_damage()
 	
 func take_damage() -> void:
 	if growth_stage >= 1:
