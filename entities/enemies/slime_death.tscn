@@ -1,5 +1,74 @@
-[gd_scene format=3 uid="uid://3gre6ncs5r13"]
+[gd_scene load_steps=12 format=3 uid="uid://3gre6ncs5r13"]
 
-[node name="DeathAnimation" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://c8fq256iyde55" path="res://assets/slime_death.png" id="1_n5g8r"]
+[ext_resource type="Script" uid="uid://ms10ei1qeri" path="res://entities/enemies/enemy_death.gd" id="2_g8s8j"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8s8j"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20wwh"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcgqg"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryw8b"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t02xo"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70p8k"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyf20"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjn6n"]
+atlas = ExtResource("1_n5g8r")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cw5vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8s8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20wwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcgqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t02xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70p8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyf20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjn6n")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}]
+
+[node name="DeathAnimation" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cw5vt")
+animation = &"death"
+script = ExtResource("2_g8s8j")

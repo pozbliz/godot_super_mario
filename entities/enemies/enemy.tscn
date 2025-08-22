@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvh0f3kkaxavg"]
+[gd_scene load_steps=11 format=3 uid="uid://cvh0f3kkaxavg"]
 
 [ext_resource type="Script" uid="uid://h6h2r652sh3h" path="res://entities/enemies/enemy.gd" id="1_5lf1o"]
 [ext_resource type="PackedScene" uid="uid://bm6rt6ivi81ve" path="res://entities/components/health_component.tscn" id="1_wqcwe"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="2_5lf1o"]
 [ext_resource type="Texture2D" uid="uid://bhvdugx8wq4v8" path="res://assets/slime.png" id="2_twyc1"]
+[ext_resource type="PackedScene" uid="uid://3gre6ncs5r13" path="res://entities/enemies/slime_death.tscn" id="2_w4yt1"]
 [ext_resource type="PackedScene" uid="uid://cyyq4u4vmmtnl" path="res://entities/components/hitbox_component.tscn" id="4_msovg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yt1"]
@@ -11,11 +12,6 @@ radius = 12.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ipr6v"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_twyc1")
@@ -36,6 +32,7 @@ scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_5lf1o")
+death_scene = ExtResource("2_w4yt1")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -44,7 +41,6 @@ shape = SubResource("CircleShape2D_w4yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ipr6v")
-animation = &"death"
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 

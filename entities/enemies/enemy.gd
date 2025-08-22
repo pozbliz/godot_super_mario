@@ -8,7 +8,6 @@ signal enemy_died
 @export var gravity : float = 1500.0
 @export var patrol_distance : float = 100.0
 @export var death_scene: PackedScene
-@export var death_spritesheet: Texture2D
 
 var direction : Vector2 = Vector2.LEFT
 
@@ -47,4 +46,3 @@ func die():
 	var death_anim = death_scene.instantiate()
 	death_anim.global_position = global_position
 	get_parent().add_child(death_anim)
-	death_anim.setup(death_spritesheet, Vector2(32,32), 6, 12)
