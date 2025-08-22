@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://fwgvm4joli1j"]
+
+[ext_resource type="PackedScene" uid="uid://cvh0f3kkaxavg" path="res://entities/enemies/enemy.tscn" id="1_kbfeu"]
+[ext_resource type="Texture2D" uid="uid://c8fq256iyde55" path="res://assets/slime_death.png" id="2_cailc"]
+[ext_resource type="Texture2D" uid="uid://bhvdugx8wq4v8" path="res://assets/slime.png" id="3_vywe2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cir6l"]
+atlas = ExtResource("2_cailc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uke5v"]
+atlas = ExtResource("2_cailc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyhca"]
+atlas = ExtResource("2_cailc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7o56"]
+atlas = ExtResource("2_cailc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyoc1"]
+atlas = ExtResource("2_cailc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjhst"]
+atlas = ExtResource("2_cailc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uyh7"]
+atlas = ExtResource("2_cailc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj3kv"]
+atlas = ExtResource("2_cailc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6b5w4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cir6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uke5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyhca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7o56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyoc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjhst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uyh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj3kv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vywe2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Slime" instance=ExtResource("1_kbfeu")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_6b5w4")
