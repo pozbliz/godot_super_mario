@@ -19,5 +19,13 @@ texture_filter = 1
 position = Vector2(451, 391)
 powerup_scene = ExtResource("6_kfbq2")
 
-[node name="Slime" parent="." instance=ExtResource("6_4dugh")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Slime" parent="Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(739, 442)
+
+[node name="Slime" parent="." instance=ExtResource("6_4dugh")]
+position = Vector2(568, 440)
+
+[node name="Slime2" parent="." instance=ExtResource("6_4dugh")]
+position = Vector2(138, 400)

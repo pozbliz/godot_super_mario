@@ -5,7 +5,10 @@ extends CharacterBody2D
 signal enemy_died
 
 @export var speed : float = 30.0
+@export var gravity : float = 1500.0
 @export var patrol_distance : float = 100.0
+@export var death_scene: PackedScene
+@export var death_spritesheet: Texture2D
 
 var direction : Vector2 = Vector2.LEFT
 
@@ -22,8 +25,10 @@ func _ready() -> void:
 func _physics_process(delta : float) -> void:
 	if abs(global_position.x - starting_position.x) > patrol_distance:
 		direction *= -1
-	velocity = direction * speed
-	global_position += velocity * delta
+	velocity.x = direction.x * speed
+	velocity.y += gravity * delta
+	
+	move_and_slide()
 	
 	update_physics(delta)
 	
@@ -34,11 +39,12 @@ func update_physics(delta : float) -> void:
 	pass
 
 func die():
-	print("enemy dying")
-	sprite.play("death")
-	$HitboxComponent/CollisionShape2D.set_deferred("disabled", true)
-	$CollisionShape2D.set_deferred("disabled", true)
+	# Release enemy immediately and instantiate death animation scene instead
 	set_deferred("monitoring", false)
-	await sprite.animation_finished
 	EventBus.enemy.enemy_died.emit()
 	queue_free()
+	
+	var death_anim = death_scene.instantiate()
+	death_anim.global_position = global_position
+	get_parent().add_child(death_anim)
+	death_anim.setup(death_spritesheet, Vector2(32,32), 6, 12)
