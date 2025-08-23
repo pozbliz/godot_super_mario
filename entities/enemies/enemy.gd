@@ -7,7 +7,7 @@ signal enemy_died
 @export var enemy_data: EnemyData
 @export var death_scene: PackedScene
 
-var direction: Vector2 = Vector2.LEFT
+var direction: Vector2 = Vector2.RIGHT
 var behavior: Node = null
 var contact_damage: int = 1
 var max_health: int = 1
@@ -55,7 +55,6 @@ func update_physics(delta: float) -> void:
 	pass
 
 func die():
-	print("enemy dying")
 	# Release enemy immediately and instantiate death animation scene instead
 	set_deferred("monitoring", false)
 	EventBus.enemy.enemy_died.emit()

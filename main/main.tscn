@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnbgjoxenlktl"]
+[gd_scene load_steps=5 format=3 uid="uid://cnbgjoxenlktl"]
 
 [ext_resource type="Script" uid="uid://y2j6ea6ia8rh" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://xw2vx8ei4mx3" path="res://world/level.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://csxc6u0b75g7s" path="res://entities/player/player.tscn" id="3_c651c"]
-[ext_resource type="PackedScene" uid="uid://dhuy7l8t6egew" path="res://world/powerup_block.tscn" id="5_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://fwgvm4joli1j" path="res://entities/enemies/slime.tscn" id="6_4dugh"]
-[ext_resource type="PackedScene" uid="uid://rsf1gj13uurf" path="res://world/mushroom.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_53q0u")
@@ -16,11 +14,19 @@ script = ExtResource("1_53q0u")
 texture_filter = 1
 position = Vector2(33, 557)
 
-[node name="PowerupBlock" parent="." instance=ExtResource("5_3wy1v")]
-position = Vector2(491, 396)
-powerup_scene = ExtResource("6_kfbq2")
-
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Slime3" parent="Enemies" instance=ExtResource("6_4dugh")]
+position = Vector2(1402, 484)
+
 [node name="Slime" parent="Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(491, 456)
+position = Vector2(497, 421)
+
+[node name="Slime2" parent="Enemies" instance=ExtResource("6_4dugh")]
+position = Vector2(1083, 293)
+
+[node name="Slime4" parent="Enemies" instance=ExtResource("6_4dugh")]
+position = Vector2(1285, -188)
+
+[node name="Slime5" parent="Enemies" instance=ExtResource("6_4dugh")]
+position = Vector2(1175, -216)
