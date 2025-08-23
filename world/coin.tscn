@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://wr2mf0tbuie3"]
+[gd_scene load_steps=5 format=3 uid="uid://wr2mf0tbuie3"]
 
 [ext_resource type="Texture2D" uid="uid://ce5a86l7xq8ok" path="res://assets/coin_1.png" id="1_14q8p"]
+[ext_resource type="Script" uid="uid://b05kymijeb3s4" path="res://world/coin.gd" id="1_v4kj1"]
 [ext_resource type="PackedScene" uid="uid://deqpw5d6el03l" path="res://entities/components/pickup_component.tscn" id="2_14q8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftwfv"]
 
 [node name="Coin" type="Area2D"]
 collision_layer = 64
+script = ExtResource("1_v4kj1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_14q8p")

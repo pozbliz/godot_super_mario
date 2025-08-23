@@ -15,7 +15,6 @@ func enter():
 	player.jump_held_time = 0.0
 	player.is_jumping = true
 	player.play_animation("jump")
-	player.world_collider.rotate(PI/2)
 	
 func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * player.input_direction_x
@@ -37,6 +36,3 @@ func physics_update(delta: float) -> void:
 
 	if not player.is_on_floor() and player.velocity.y >= 0:
 		state_machine.change_state(player.states.fall)
-		
-func exit():
-	player.world_collider.rotate(-PI/2)

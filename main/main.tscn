@@ -12,7 +12,7 @@ script = ExtResource("1_53q0u")
 
 [node name="Player" parent="." instance=ExtResource("3_c651c")]
 texture_filter = 1
-position = Vector2(33, 557)
+position = Vector2(33, 518)
 
 [node name="Enemies" type="Node2D" parent="."]
 

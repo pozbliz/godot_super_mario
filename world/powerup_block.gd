@@ -11,6 +11,7 @@ func _ready() -> void:
 	$Area2D.body_entered.connect(_on_player_hit_from_below)
 
 func _on_player_hit_from_below(body: CharacterBody2D) -> void:
+	print("block hit from below")
 	if not body is Player:
 		return
 

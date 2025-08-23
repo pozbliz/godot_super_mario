@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 func setup() -> void:
 	pass
 	
-func update_physics(delta: float) -> void:
+func update_physics(_delta: float) -> void:
 	pass
 
 func die():

@@ -3,7 +3,6 @@ extends State
 
 func enter():
 	player.play_animation("fall")
-	player.world_collider.rotate(PI/2)
 
 func physics_update(delta: float) -> void:
 	player.input_direction_x = Input.get_axis("move_left", "move_right")
@@ -21,6 +20,3 @@ func physics_update(delta: float) -> void:
 			state_machine.change_state(player.states.idle)
 		else:
 			state_machine.change_state(player.states.run)
-			
-func exit():
-	player.world_collider.rotate(-PI/2)

@@ -28,6 +28,19 @@ window/size/viewport_height=600
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://entities/": "orange",
+"res://entities/enemies/": "red",
+"res://entities/player/": "purple",
+"res://main/": "teal",
+"res://ui/": "pink",
+"res://util/": "gray",
+"res://world/": "blue"
+}
+
 [input]
 
 move_left={

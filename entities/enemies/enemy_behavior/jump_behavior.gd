@@ -2,7 +2,7 @@ extends Node
 
 var enemy: Enemy
 var timer: float = 0.0
-var jump_velocity: float = -500.0
+var jump_velocity: float = -300.0
 
 func init(e: Enemy) -> void:
 	enemy = e

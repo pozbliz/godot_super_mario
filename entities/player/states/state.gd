@@ -23,5 +23,5 @@ func exit():
 func physics_update(_delta: float):
 	pass
 
-func handle_input(event):
+func handle_input(_event):
 	pass

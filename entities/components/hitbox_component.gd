@@ -10,7 +10,7 @@ func _ready() -> void:
 		contact_damage = get_parent().contact_damage
 
 
-func attack() -> Attack:
+func get_attack() -> Attack:
 	var attack := Attack.new()
 	attack.attack_damage = contact_damage
 	return attack
