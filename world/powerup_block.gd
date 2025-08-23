@@ -18,7 +18,7 @@ func _on_player_hit_from_below(body : CharacterBody2D) -> void:
 		return
 		
 	used = true
-	#$Sprite2D.texture = preload() # add texture for used block
+	$Sprite2D.texture = preload("res://assets/powerup_exhausted.png")
 	if powerup_scene:
 		var powerup = powerup_scene.instantiate()
 		get_parent().add_child(powerup)
