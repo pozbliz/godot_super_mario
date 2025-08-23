@@ -19,9 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://k0ougielew0r" path="res://assets/player_small_run.png" id="9_50fht"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="9_wvtmh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b2kln"]
-radius = 8.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2kln"]
 atlas = ExtResource("4_mtric")
 region = Rect2(0, 0, 32, 32)
@@ -177,6 +174,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2kln"]
+size = Vector2(16, 24.5)
+
 [sub_resource type="Animation" id="Animation_b2kln"]
 length = 0.001
 tracks/0/type = "value"
@@ -242,13 +242,13 @@ scale = Vector2(2, 2)
 collision_mask = 14
 script = ExtResource("1_oul6g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 3)
-shape = SubResource("CircleShape2D_b2kln")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_np63p")
-animation = &"small_fall"
+animation = &"small_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2.75)
+shape = SubResource("RectangleShape2D_b2kln")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -272,7 +272,7 @@ collision_mask = 16
 script = ExtResource("4_wvtmh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 13)
+position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_7thud")
 
 [node name="StateMachine" type="Node" parent="."]

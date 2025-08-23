@@ -7,11 +7,14 @@ signal enemy_died
 @export var enemy_data: EnemyData
 @export var death_scene: PackedScene
 
-var direction : Vector2 = Vector2.LEFT
+var direction: Vector2 = Vector2.LEFT
 var behavior: Node = null
+var contact_damage: int = 1
+var max_health: int = 1
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var starting_position : Vector2 = global_position
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var starting_position: Vector2 = global_position
+@onready var floor_ray: RayCast2D = $RayCast2D
 
 
 func _ready() -> void:
@@ -19,6 +22,8 @@ func _ready() -> void:
 	sprite.play("default")
 	
 	if enemy_data:
+		max_health = enemy_data.max_health
+		contact_damage = enemy_data.attack_power
 		if enemy_data.behavior_script:
 			behavior = enemy_data.behavior_script.new()
 			add_child(behavior)
@@ -28,7 +33,7 @@ func _ready() -> void:
 	
 	setup()
 
-func _physics_process(delta : float) -> void:
+func _physics_process(delta: float) -> void:
 	if abs(global_position.x - starting_position.x) > enemy_data.patrol_distance:
 		direction *= -1
 	velocity.x = direction.x * enemy_data.speed
@@ -37,15 +42,20 @@ func _physics_process(delta : float) -> void:
 	
 	move_and_slide()
 	
+	if not floor_ray.is_colliding() and is_on_floor():
+		direction.x = -direction.x
+		floor_ray.position.x = -floor_ray.position.x
+	
 	update_physics(delta)
 	
 func setup() -> void:
 	pass
 	
-func update_physics(delta : float) -> void:
+func update_physics(delta: float) -> void:
 	pass
 
 func die():
+	print("enemy dying")
 	# Release enemy immediately and instantiate death animation scene instead
 	set_deferred("monitoring", false)
 	EventBus.enemy.enemy_died.emit()

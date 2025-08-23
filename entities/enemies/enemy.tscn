@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cyyq4u4vmmtnl" path="res://entities/components/hitbox_component.tscn" id="4_msovg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yt1"]
-radius = 12.0
+radius = 11.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ipr6v"]
 animations = [{
@@ -22,10 +22,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gj3y3"]
-radius = 12.0
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56i32"]
-radius = 12.0
+radius = 11.0
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -36,7 +36,7 @@ death_scene = ExtResource("2_w4yt1")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_w4yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -50,7 +50,7 @@ collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_gj3y3")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_msovg")]
@@ -58,5 +58,10 @@ collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_56i32")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(12, 0)
+target_position = Vector2(0, 24)
+collision_mask = 4

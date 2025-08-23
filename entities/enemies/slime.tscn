@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="5_wyoc1"]
 [ext_resource type="PackedScene" uid="uid://cyyq4u4vmmtnl" path="res://entities/components/hitbox_component.tscn" id="6_wjhst"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w4yt1"]
-radius = 12.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_6b5w4"]
 animations = [{
 "frames": [{
@@ -22,11 +19,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gj3y3"]
-radius = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4yt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyhca"]
+size = Vector2(20, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56i32"]
-radius = 12.0
 
 [node name="Slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -37,12 +35,12 @@ enemy_data = ExtResource("2_d7o56")
 death_scene = ExtResource("2_fyhca")
 metadata/_edit_group_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6b5w4")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_w4yt1")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6b5w4")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_d7o56")]
 
@@ -52,8 +50,8 @@ collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, 5)
-shape = SubResource("CircleShape2D_gj3y3")
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_fyhca")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("6_wjhst")]
 collision_layer = 32
@@ -62,3 +60,8 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_56i32")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(12, 0)
+target_position = Vector2(0, 24)
+collision_mask = 4

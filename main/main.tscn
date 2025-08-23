@@ -14,18 +14,13 @@ script = ExtResource("1_53q0u")
 
 [node name="Player" parent="." instance=ExtResource("3_c651c")]
 texture_filter = 1
+position = Vector2(33, 557)
 
 [node name="PowerupBlock" parent="." instance=ExtResource("5_3wy1v")]
-position = Vector2(451, 391)
+position = Vector2(491, 396)
 powerup_scene = ExtResource("6_kfbq2")
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Slime" parent="Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(739, 442)
-
-[node name="Slime2" parent="Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(568, 440)
-
-[node name="Slime3" parent="Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(138, 400)
+position = Vector2(491, 456)

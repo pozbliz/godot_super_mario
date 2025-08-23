@@ -2,7 +2,7 @@ class_name PowerupBlock
 extends StaticBody2D
 
 
-@export var powerup_scene : PackedScene
+@export var powerup_scene: PackedScene
 
 var used : bool = false
 
@@ -10,7 +10,7 @@ var used : bool = false
 func _ready() -> void:
 	$Area2D.body_entered.connect(_on_player_hit_from_below)
 
-func _on_player_hit_from_below(body : CharacterBody2D) -> void:
+func _on_player_hit_from_below(body: CharacterBody2D) -> void:
 	if not body is Player:
 		return
 
