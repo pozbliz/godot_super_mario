@@ -9,12 +9,13 @@ signal enemy_died
 
 var direction: Vector2 = Vector2.RIGHT
 var behavior: Node = null
-var contact_damage: int = 1
+var attack_damage: int = 1
 var max_health: int = 1
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var starting_position: Vector2 = global_position
-@onready var floor_ray: RayCast2D = $RayCast2D
+@onready var floor_ray: RayCast2D = $FloorRay
+@onready var wall_ray: RayCast2D = $WallRay
 
 
 func _ready() -> void:
@@ -23,7 +24,7 @@ func _ready() -> void:
 	
 	if enemy_data:
 		max_health = enemy_data.max_health
-		contact_damage = enemy_data.attack_power
+		attack_damage = enemy_data.attack_power
 		if enemy_data.behavior_script:
 			behavior = enemy_data.behavior_script.new()
 			add_child(behavior)
@@ -38,13 +39,12 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 	velocity.x = direction.x * enemy_data.speed
 	velocity.y += enemy_data.gravity * delta
-	sprite.flip_h = direction.x < 0
 	
 	move_and_slide()
 	
-	if not floor_ray.is_colliding() and is_on_floor():
+	if (not floor_ray.is_colliding() or wall_ray.is_colliding()) and is_on_floor():
 		direction.x = -direction.x
-		floor_ray.position.x = -floor_ray.position.x
+		scale.x = -scale.x
 	
 	update_physics(delta)
 	

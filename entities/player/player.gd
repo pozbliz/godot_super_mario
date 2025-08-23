@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var max_jump_hold_time: float = 0.2
 @export var max_health: float = 1.0
 
-var contact_damage: int = 1
+var attack_damage: int = 1
 var coyote_timer: float = 0.0
 var input_direction_x: float
 var facing_direction_x: float = 1.0
@@ -75,6 +75,5 @@ func take_damage() -> void:
 		die()
 	
 func die() -> void:
-	print("player died")
 	EventBus.player.player_died.emit()
 	# TODO: add death animation

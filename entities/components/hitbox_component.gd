@@ -2,15 +2,14 @@ class_name AttackHitbox
 extends Area2D
 
 
-var contact_damage: int = 1
+var attack_damage: int = 1
 
 
 func _ready() -> void:
-	if get_parent().contact_damage:
-		contact_damage = get_parent().contact_damage
-
-
+	if get_parent().attack_damage:
+		attack_damage = get_parent().attack_damage
+	
 func get_attack() -> Attack:
 	var attack := Attack.new()
-	attack.attack_damage = contact_damage
+	attack.attack_damage = attack_damage
 	return attack

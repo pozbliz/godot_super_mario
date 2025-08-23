@@ -11,7 +11,6 @@ func _ready() -> void:
 	$Area2D.body_entered.connect(_on_player_hit_from_below)
 
 func _on_player_hit_from_below(body: CharacterBody2D) -> void:
-	print("block hit from below")
 	if not body is Player:
 		return
 
@@ -23,4 +22,4 @@ func _on_player_hit_from_below(body: CharacterBody2D) -> void:
 	if powerup_scene:
 		var powerup = powerup_scene.instantiate()
 		get_parent().add_child(powerup)
-		powerup.global_position = global_position + Vector2(0, -32) # spawn above
+		powerup.global_position = global_position + Vector2(0, -32)  # spawn above
