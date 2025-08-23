@@ -11,6 +11,8 @@ func _ready():
 func _on_hurtbox_component_area_entered(area: Area2D) -> void:
 	if area is AttackHitbox and health_component:
 		if area.owner == get_parent():
+		#if area.get_groups() == get_groups():
+			#print("group: ", get_groups())
 			return
 			
 		health_component.damage(area.attack())

@@ -14,7 +14,6 @@ func damage(attack: Attack):
 	
 	if get_parent() is Player:
 		get_parent().take_damage()
-		print("player takes damage")
 	
 	if current_health <= 0:
 		await get_parent().die()
