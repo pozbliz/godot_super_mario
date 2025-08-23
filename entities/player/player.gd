@@ -36,6 +36,7 @@ var animation_map = {
 	"duck": $StateMachine/Duck
 }
 @onready var growth_stage: int = 0
+@onready var viewport_size: Vector2 = get_viewport_rect().size
 
 
 func _ready() -> void:
@@ -46,6 +47,10 @@ func _ready() -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if get_tree().paused:
 		return
+		
+func _physics_process(delta: float) -> void:
+	if global_position.y > viewport_size.y:
+		die()
 		
 func grow() -> void:
 	growth_stage += 1
@@ -70,5 +75,6 @@ func take_damage() -> void:
 		die()
 	
 func die() -> void:
+	print("player died")
 	EventBus.player.player_died.emit()
 	# TODO: add death animation
