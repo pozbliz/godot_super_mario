@@ -33,6 +33,7 @@ func _physics_process(delta : float) -> void:
 		direction *= -1
 	velocity.x = direction.x * enemy_data.speed
 	velocity.y += enemy_data.gravity * delta
+	sprite.flip_h = direction.x < 0
 	
 	move_and_slide()
 	
