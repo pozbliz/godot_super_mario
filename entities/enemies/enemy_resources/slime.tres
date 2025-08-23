@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dgdy6f02t7fco"]
+
+[ext_resource type="Script" uid="uid://cxt27r1k80fdf" path="res://entities/enemies/enemy_data.gd" id="1_2bjgb"]
+[ext_resource type="Script" uid="uid://bpefdcn1v3wmv" path="res://entities/enemies/enemy_behavior/jump_behavior.gd" id="1_d7f0d"]
+
+[resource]
+script = ExtResource("1_2bjgb")
+max_health = 1
+speed = 65.0
+attack_power = 1
+gravity = 1500.0
+patrol_distance = 100.0
+behavior_script = ExtResource("1_d7f0d")
+metadata/_custom_type_script = "uid://cxt27r1k80fdf"

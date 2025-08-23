@@ -4,12 +4,11 @@ extends CharacterBody2D
 
 signal enemy_died
 
-@export var speed : float = 30.0
-@export var gravity : float = 1500.0
-@export var patrol_distance : float = 100.0
+@export var enemy_data: EnemyData
 @export var death_scene: PackedScene
 
 var direction : Vector2 = Vector2.LEFT
+var behavior: Node = null
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var starting_position : Vector2 = global_position
@@ -17,15 +16,23 @@ var direction : Vector2 = Vector2.LEFT
 
 func _ready() -> void:
 	add_to_group("enemy")
-	#if sprite:
-		#sprite.play("default")
+	sprite.play("default")
+	
+	if enemy_data:
+		if enemy_data.behavior_script:
+			behavior = enemy_data.behavior_script.new()
+			add_child(behavior)
+			behavior.owner = self
+			if behavior.has_method("init"):
+				behavior.init(self)
+	
 	setup()
 
 func _physics_process(delta : float) -> void:
-	if abs(global_position.x - starting_position.x) > patrol_distance:
+	if abs(global_position.x - starting_position.x) > enemy_data.patrol_distance:
 		direction *= -1
-	velocity.x = direction.x * speed
-	velocity.y += gravity * delta
+	velocity.x = direction.x * enemy_data.speed
+	velocity.y += enemy_data.gravity * delta
 	
 	move_and_slide()
 	
