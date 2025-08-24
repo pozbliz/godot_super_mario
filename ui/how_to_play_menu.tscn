@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xcxr1yg4m7oc"]
+[gd_scene load_steps=3 format=3 uid="uid://xcxr1yg4m7oc"]
 
 [ext_resource type="Theme" uid="uid://bunuwhfnqwadq" path="res://ui/default_theme.tres" id="1_k7hyw"]
+[ext_resource type="Script" uid="uid://n25461485spg" path="res://ui/how_to_play_menu.gd" id="2_ulrfd"]
 
 [node name="HowToPlayMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_k7hyw")
+script = ExtResource("2_ulrfd")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

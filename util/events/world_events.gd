@@ -6,6 +6,7 @@ signal game_started
 signal pause_requested
 signal game_resumed
 signal options_menu_opened
+signal how_to_play_opened
 signal main_menu_opened
 signal back_button_pressed
 signal level_finished
