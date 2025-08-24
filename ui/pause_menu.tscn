@@ -46,7 +46,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Options"
 
-[node name="MainMenuOpenedButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Return To Main Menu"

@@ -1,20 +1,8 @@
 extends Node
 
 
-@onready var pause_menu: Control = $Interface/PauseMenu
-@onready var options_menu: Control = $Interface/OptionsMenu
-@onready var level_finished_screen: Control = $Interface/LevelFinishedScreen
-@onready var game_over_screen: Control = $Interface/GameOverScreen
-
-
 func _ready() -> void:
-	EventBus.world.game_started.connect(new_game)
-	
-	pause_menu.hide()
-	options_menu.hide()
-	level_finished_screen.hide()
-	game_over_screen.hide()
-	
+	EventBus.world.game_started.connect(new_game)	
 	EventBus.world.game_resumed.connect(resume_game)
 	EventBus.world.options_menu_opened.connect(open_options)
 	EventBus.world.main_menu_opened.connect(exit_to_menu)
@@ -34,11 +22,10 @@ func new_game():
 	
 func pause_game():
 	get_tree().paused = true
-	pause_menu.open()
+	EventBus.world.pause_requested.emit()
 	
 func resume_game():
 	get_tree().paused = false
-	pause_menu.close()
 	
 func open_options():
 	pass

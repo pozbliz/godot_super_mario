@@ -11,29 +11,30 @@
 [ext_resource type="PackedScene" uid="uid://byfgo8htauayg" path="res://ui/options_menu.tscn" id="9_grrlh"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_53q0u")
 
-[node name="Level" parent="." instance=ExtResource("2_xwkvk")]
+[node name="World" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_c651c")]
+[node name="Level" parent="World" instance=ExtResource("2_xwkvk")]
+
+[node name="Player" parent="World" instance=ExtResource("3_c651c")]
 texture_filter = 1
 position = Vector2(33, 518)
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="World"]
 
-[node name="Slime3" parent="Enemies" instance=ExtResource("6_4dugh")]
+[node name="Slime3" parent="World/Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(1402, 484)
 
-[node name="Slime" parent="Enemies" instance=ExtResource("6_4dugh")]
+[node name="Slime" parent="World/Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(497, 421)
 
-[node name="Slime2" parent="Enemies" instance=ExtResource("6_4dugh")]
+[node name="Slime2" parent="World/Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(1083, 293)
 
-[node name="Slime4" parent="Enemies" instance=ExtResource("6_4dugh")]
+[node name="Slime4" parent="World/Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(1285, -188)
 
-[node name="Slime5" parent="Enemies" instance=ExtResource("6_4dugh")]
+[node name="Slime5" parent="World/Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(1175, -216)
 
 [node name="Interface" type="CanvasLayer" parent="."]
@@ -47,3 +48,6 @@ position = Vector2(1175, -216)
 [node name="GameOverScreen" parent="Interface" instance=ExtResource("8_grrlh")]
 
 [node name="OptionsMenu" parent="Interface" instance=ExtResource("9_grrlh")]
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("1_53q0u")

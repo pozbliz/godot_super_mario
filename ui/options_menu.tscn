@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byfgo8htauayg"]
+[gd_scene load_steps=3 format=3 uid="uid://byfgo8htauayg"]
 
 [ext_resource type="Theme" uid="uid://bunuwhfnqwadq" path="res://ui/default_theme.tres" id="1_ibk6l"]
+[ext_resource type="Script" uid="uid://22tanxmknt05" path="res://ui/options_menu.gd" id="2_aa3db"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ibk6l")
+script = ExtResource("2_aa3db")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

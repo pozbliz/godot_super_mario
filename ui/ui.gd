@@ -15,9 +15,7 @@ func _ready() -> void:
 	$MainMenu/MarginContainer/VBoxContainer/HowToPlayButton.pressed.connect(open_how_to_play_menu)
 	$MainMenu/MarginContainer/VBoxContainer/OptionsButton.pressed.connect(open_options_menu)
 	$MainMenu/MarginContainer/VBoxContainer/ExitGameButton.pressed.connect(_on_exit_game_button_pressed)
-	
 	$HowToPlayMenu/MarginContainer/VBoxContainer/BackButton.pressed.connect(_on_back_button_pressed)
-	
 	$OptionsMenu/MarginContainer/VBoxContainer/BackButton.pressed.connect(_on_back_button_pressed)
 	
 	open_main_menu()
