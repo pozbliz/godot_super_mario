@@ -1,14 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnbgjoxenlktl"]
+[gd_scene load_steps=5 format=3 uid="uid://cnbgjoxenlktl"]
 
 [ext_resource type="Script" uid="uid://y2j6ea6ia8rh" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="PackedScene" uid="uid://xw2vx8ei4mx3" path="res://world/level.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://csxc6u0b75g7s" path="res://entities/player/player.tscn" id="3_c651c"]
-[ext_resource type="PackedScene" uid="uid://cc6rqji6i116i" path="res://ui/hud.tscn" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://fwgvm4joli1j" path="res://entities/enemies/slime.tscn" id="6_4dugh"]
-[ext_resource type="PackedScene" uid="uid://noie5pq3tygd" path="res://ui/pause_menu.tscn" id="6_67ri8"]
-[ext_resource type="PackedScene" uid="uid://bjmmqxeu5fh8s" path="res://ui/level_finished_screen.tscn" id="7_67ri8"]
-[ext_resource type="PackedScene" uid="uid://cla6hhj7i1fvv" path="res://ui/game_over_screen.tscn" id="8_grrlh"]
-[ext_resource type="PackedScene" uid="uid://byfgo8htauayg" path="res://ui/options_menu.tscn" id="9_grrlh"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_53q0u")
@@ -35,15 +30,3 @@ position = Vector2(1285, -188)
 
 [node name="Slime5" parent="Enemies" instance=ExtResource("6_4dugh")]
 position = Vector2(1175, -216)
-
-[node name="Interface" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="Interface" instance=ExtResource("5_kfbq2")]
-
-[node name="PauseMenu" parent="Interface" instance=ExtResource("6_67ri8")]
-
-[node name="LevelFinishedScreen" parent="Interface" instance=ExtResource("7_67ri8")]
-
-[node name="GameOverScreen" parent="Interface" instance=ExtResource("8_grrlh")]
-
-[node name="OptionsMenu" parent="Interface" instance=ExtResource("9_grrlh")]

@@ -10,10 +10,6 @@ func show_message(text):
 	$MarginContainer/Message.text = text
 	$MarginContainer/Message.show()
 	$MarginContainer/MessageTimer.start()
-
-func show_game_over():
-	show_message("Game Over")
-	await $MarginContainer/MessageTimer.timeout
 	
 func update_score(score):
 	$HBoxContainer/ScoreLabel.text = str(score)
