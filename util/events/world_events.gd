@@ -3,7 +3,7 @@ extends Node
 
 # UI Signals
 signal game_started
-signal pause_requested
+signal game_paused
 signal game_resumed
 signal options_menu_opened
 signal how_to_play_opened

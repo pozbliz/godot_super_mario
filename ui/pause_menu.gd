@@ -15,10 +15,11 @@ func _ready() -> void:
 	
 	hide()
 	
-	EventBus.world.pause_requested.connect(open)
+	EventBus.world.game_paused.connect(open)
 	EventBus.world.how_to_play_opened.connect(close)
 	EventBus.world.options_menu_opened.connect(close)
 	EventBus.world.back_button_pressed.connect(open)
+	EventBus.world.game_resumed.connect(close)
 
 	resume_game_button.pressed.connect(_on_resume_game_button_pressed)
 	how_to_play_button.pressed.connect(_on_how_to_play_button_pressed)

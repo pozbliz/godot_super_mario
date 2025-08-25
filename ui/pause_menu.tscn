@@ -26,9 +26,9 @@ color = Color(0, 0, 0, 0.564706)
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 offset_left = 211.0
-offset_top = 237.0
-offset_right = 589.0
-offset_bottom = 362.0
+offset_top = 215.5
+offset_right = 611.0
+offset_bottom = 383.5
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
