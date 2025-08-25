@@ -16,6 +16,7 @@ var input_direction_x: float
 var facing_direction_x: float = 1.0
 var jump_held_time: float = 0.0
 var is_jumping: bool = false
+var is_dead: bool = false
 var animation_map = {
 	"idle": ["small_idle", "big_idle"],
 	"run":  ["small_run", "big_run"],
@@ -49,7 +50,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 		
 func _physics_process(delta: float) -> void:
-	if global_position.y > viewport_size.y:
+	if not is_dead and global_position.y > viewport_size.y:
 		die()
 		
 func grow() -> void:
@@ -75,5 +76,9 @@ func take_damage() -> void:
 		die()
 	
 func die() -> void:
+	if is_dead:
+		return
+		
+	is_dead = true
 	EventBus.player.player_died.emit()
 	# TODO: add death animation

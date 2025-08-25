@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	EventBus.world.game_started.connect(new_game)
 	EventBus.world.main_menu_opened.connect(exit_to_menu)
+	EventBus.player.player_died.connect(_on_player_died)
 
 func _process(_delta: float) -> void:
 	pass
@@ -32,11 +33,19 @@ func resume_game():
 	get_tree().paused = false
 	EventBus.world.game_resumed.emit()
 	
+func _on_player_died():
+	current_lives -= 1
+	if current_lives <= 0:
+		game_over()
+	else:
+		respawn_player()
+		
+func respawn_player():
+	$Player.global_position = $Level/PlayerSpawnPoint.global_position
+	$Player.is_dead = false
+	
 func game_over():
-	$Player.set_process(false)
-	$Player.set_physics_process(false)
-	$Player.set_process_unhandled_input(false)
-	$GameOverScreen.show()
+	EventBus.world.game_over.emit()
 	
 func exit_to_menu():
 	get_tree().change_scene_to_file("res://ui/ui.tscn")
