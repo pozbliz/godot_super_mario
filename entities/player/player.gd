@@ -80,5 +80,12 @@ func die() -> void:
 		return
 		
 	is_dead = true
+	
+	state_machine.set_process(false)
+	state_machine.set_physics_process(false)
+	
+	sprite.play("death")
+	sprite.animation_finished.connect(_on_death_animation_finished)
+
+func _on_death_animation_finished():
 	EventBus.player.player_died.emit()
-	# TODO: add death animation

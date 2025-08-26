@@ -32,6 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func new_game():
 	current_lives = max_lives
 	player.is_dead = false
+	player.set_process(true)
+	player.set_physics_process(true)
+	player.set_process_unhandled_input(true)
 	EventBus.player.lives_updated.emit(current_lives)
 	
 	load_level(level1_scene)
@@ -64,9 +67,10 @@ func _on_player_died():
 		respawn_player()
 		
 func respawn_player():
-	if current_level:
-		player.global_position = current_level.get_player_spawn_position()
-		player.is_dead = false
+	player.global_position = current_level.get_player_spawn_position()
+	player.is_dead = false
+	player.state_machine.set_process(true)
+	player.state_machine.set_physics_process(true)
 	
 func game_over():
 	EventBus.world.game_over.emit()
