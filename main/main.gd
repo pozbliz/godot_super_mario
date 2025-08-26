@@ -31,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func new_game():
 	current_lives = max_lives
+	player.is_dead = false
 	EventBus.player.lives_updated.emit(current_lives)
 	
 	load_level(level1_scene)
@@ -56,6 +57,7 @@ func load_level(level_scene: PackedScene):
 func _on_player_died():
 	current_lives -= 1
 	EventBus.player.lives_updated.emit(current_lives)
+	await get_tree().create_timer(2).timeout
 	if current_lives <= 0:
 		game_over()
 	else:
