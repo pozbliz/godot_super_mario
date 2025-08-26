@@ -3,14 +3,21 @@ extends Node
 
 var current_lives: int
 var max_lives: int = 3
+var current_level: Node = null
+var level1_scene: PackedScene = preload("res://world/level1.tscn")
+
+@onready var player: Player = $"../World/Player"
+@onready var level: Node2D = $"../World/Level"
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	EventBus.world.game_started.connect(new_game)
 	EventBus.world.main_menu_opened.connect(exit_to_menu)
 	EventBus.player.player_died.connect(_on_player_died)
+	
+	new_game()
+	
 
 func _process(_delta: float) -> void:
 	pass
@@ -24,6 +31,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func new_game():
 	current_lives = max_lives
+	EventBus.player.lives_updated.emit(current_lives)
+	
+	load_level(level1_scene)
 	
 func pause_game():
 	get_tree().paused = true
@@ -33,16 +43,28 @@ func resume_game():
 	get_tree().paused = false
 	EventBus.world.game_resumed.emit()
 	
+func load_level(level_scene: PackedScene):
+	if current_level:
+		current_level.queue_free()
+		
+	current_level  = level_scene.instantiate()
+	level.add_child(current_level)
+
+	player.global_position = current_level.get_player_spawn_position()
+	player.is_dead = false
+	
 func _on_player_died():
 	current_lives -= 1
+	EventBus.player.lives_updated.emit(current_lives)
 	if current_lives <= 0:
 		game_over()
 	else:
 		respawn_player()
 		
 func respawn_player():
-	$Player.global_position = $Level/PlayerSpawnPoint.global_position
-	$Player.is_dead = false
+	if current_level:
+		player.global_position = current_level.get_player_spawn_position()
+		player.is_dead = false
 	
 func game_over():
 	EventBus.world.game_over.emit()

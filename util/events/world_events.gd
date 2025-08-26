@@ -2,7 +2,6 @@ class_name WorldEvents
 extends Node
 
 # UI Signals
-signal game_started
 signal game_paused
 signal game_resumed
 signal options_menu_opened

@@ -1,8 +1,6 @@
 extends Control
 
 
-signal game_started
-
 @onready var start_game_button: Button = $MarginContainer/VBoxContainer/StartGameButton
 @onready var how_to_play_button: Button = $MarginContainer/VBoxContainer/HowToPlayButton
 @onready var options_button: Button = $MarginContainer/VBoxContainer/OptionsButton
@@ -46,6 +44,5 @@ func _on_how_to_play_button_pressed():
 	close()
 	
 func start_game():
-	EventBus.world.game_started.emit()
 	get_tree().change_scene_to_file("res://main/main.tscn")
 	

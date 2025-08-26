@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf6twyd3wc2lo"]
+
+[ext_resource type="Script" uid="uid://dqgksdlqbe4b5" path="res://ui/lives_display.gd" id="1_akqa2"]
+[ext_resource type="Texture2D" uid="uid://ckhkqmx20dj25" path="res://assets/life_icon.png" id="2_ermpd"]
+
+[node name="LivesDisplay" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
+script = ExtResource("1_akqa2")
+
+[node name="1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_ermpd")
+stretch_mode = 2
+
+[node name="2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_ermpd")
+stretch_mode = 2
+
+[node name="3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_ermpd")
+stretch_mode = 2
