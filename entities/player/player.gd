@@ -61,6 +61,7 @@ func grow() -> void:
 	animation_player.play("grow")
 		
 func shrink() -> void:
+	print("shrinking")
 	growth_stage -= 1
 	clamp(growth_stage, 0, 1)
 	animation_player.play("shrink")
@@ -70,6 +71,7 @@ func play_animation(action: String) -> void:
 	sprite.play(animation)
 	
 func take_damage() -> void:
+	print("taking damage")
 	if growth_stage >= 1:
 		shrink()
 	else:
