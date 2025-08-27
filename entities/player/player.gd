@@ -17,6 +17,8 @@ var facing_direction_x: float = 1.0
 var jump_held_time: float = 0.0
 var is_jumping: bool = false
 var is_dead: bool = false
+var invincibility_timer: float = 0.2
+var is_invincible: bool = false
 var animation_map = {
 	"idle": ["small_idle", "big_idle"],
 	"run":  ["small_run", "big_run"],
@@ -54,8 +56,10 @@ func _physics_process(delta: float) -> void:
 		die()
 		
 func grow() -> void:
+	if growth_stage == 1:
+		return
+		
 	growth_stage += 1
-	clamp(growth_stage, 0, 1)
 	$HealthComponent.max_health = 2
 	$HealthComponent.current_health = 2
 	animation_player.play("grow")
@@ -70,10 +74,28 @@ func play_animation(action: String) -> void:
 	sprite.play(animation)
 	
 func take_damage() -> void:
+	if is_invincible:
+		return
+		
 	if growth_stage >= 1:
 		shrink()
 	else:
 		die()
+		
+	is_invincible = true
+	var timer = get_tree().create_timer(invincibility_timer)
+	hit_flash()
+	timer.timeout.connect(_end_invincibility)
+	
+func _end_invincibility() -> void:
+	is_invincible = false
+	
+func hit_flash():
+	var tween = create_tween()
+	
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 2)
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0.5), 0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.05)
 	
 func die() -> void:
 	if is_dead:
@@ -89,3 +111,8 @@ func die() -> void:
 
 func _on_death_animation_finished():
 	EventBus.player.player_died.emit()
+	
+func respawn():
+	is_dead = false
+	is_invincible = false
+	growth_stage = 0

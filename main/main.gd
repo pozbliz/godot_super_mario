@@ -68,7 +68,7 @@ func _on_player_died():
 		
 func respawn_player():
 	player.global_position = current_level.get_player_spawn_position()
-	player.is_dead = false
+	player.respawn()
 	player.state_machine.set_process(true)
 	player.state_machine.set_physics_process(true)
 	
