@@ -21,11 +21,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gj3y3"]
-radius = 11.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4yt1"]
+size = Vector2(20, 5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_56i32"]
-radius = 11.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipr6v"]
+size = Vector2(21, 10)
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -50,16 +50,16 @@ collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_gj3y3")
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_w4yt1")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_msovg")]
 collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_56i32")
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ipr6v")
 
 [node name="FloorRay" type="RayCast2D" parent="."]
 position = Vector2(12, 0)
