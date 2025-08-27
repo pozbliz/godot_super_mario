@@ -54,10 +54,20 @@ func setup() -> void:
 func update_physics(_delta: float) -> void:
 	pass
 
+func hit_flash(blinks: int):
+	for i in range(0, blinks):
+		sprite.material.set("shader_parameter/flash", true)
+		await get_tree().create_timer(0.10).timeout
+		sprite.material.set("shader_parameter/flash", false)
+		await get_tree().create_timer(0.10).timeout
+
 func die():
 	# Release enemy immediately and instantiate death animation scene instead
-	set_deferred("monitoring", false)
+	$HitboxComponent/CollisionShape2D.disabled = true
 	EventBus.enemy.enemy_died.emit()
+	
+	await hit_flash(1)
+	
 	queue_free()
 	
 	var death_anim = death_scene.instantiate()

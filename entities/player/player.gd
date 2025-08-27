@@ -17,7 +17,7 @@ var facing_direction_x: float = 1.0
 var jump_held_time: float = 0.0
 var is_jumping: bool = false
 var is_dead: bool = false
-var invincibility_timer: float = 0.2
+var invincibility_timer: float = 1.0
 var is_invincible: bool = false
 var animation_map = {
 	"idle": ["small_idle", "big_idle"],
@@ -84,18 +84,18 @@ func take_damage() -> void:
 		
 	is_invincible = true
 	var timer = get_tree().create_timer(invincibility_timer)
-	hit_flash()
+	hit_flash(5)
 	timer.timeout.connect(_end_invincibility)
 	
 func _end_invincibility() -> void:
 	is_invincible = false
 	
-func hit_flash():
-	var tween = create_tween()
-	
-	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 2)
-	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0.5), 0.05).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.05)
+func hit_flash(blinks: int):
+	for i in range(0, blinks):
+		sprite.material.set("shader_parameter/flash", true)
+		await get_tree().create_timer(0.10).timeout
+		sprite.material.set("shader_parameter/flash", false)
+		await get_tree().create_timer(0.10).timeout
 	
 func die() -> void:
 	if is_dead:

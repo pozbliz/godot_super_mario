@@ -1,5 +1,6 @@
-[gd_scene load_steps=52 format=3 uid="uid://csxc6u0b75g7s"]
+[gd_scene load_steps=54 format=3 uid="uid://csxc6u0b75g7s"]
 
+[ext_resource type="Shader" uid="uid://d211i4vejnf33" path="res://entities/player/hit_flash.gdshader" id="1_mtric"]
 [ext_resource type="Script" uid="uid://mh4l7l3pwbud" path="res://entities/player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://b0e0wuq6dpm5c" path="res://assets/player_big_duck.png" id="2_b2kln"]
 [ext_resource type="Script" uid="uid://c2pcuwflfly0e" path="res://entities/player/states/state_machine.gd" id="2_rkbax"]
@@ -19,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://braib0r8bgnyh" path="res://assets/player_small_jump.png" id="8_t1t22"]
 [ext_resource type="Texture2D" uid="uid://k0ougielew0r" path="res://assets/player_small_run.png" id="9_50fht"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="9_wvtmh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtric"]
+shader = ExtResource("1_mtric")
+shader_parameter/flash = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2kln"]
 atlas = ExtResource("4_mtric")
@@ -333,6 +338,7 @@ collision_mask = 12
 script = ExtResource("1_oul6g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mtric")
 sprite_frames = SubResource("SpriteFrames_np63p")
 animation = &"big_idle"
 
