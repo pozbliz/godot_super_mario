@@ -63,10 +63,9 @@ func hit_flash(blinks: int):
 
 func die():
 	# Release enemy immediately and instantiate death animation scene instead
+	$HitboxComponent.monitoring = false
 	$HitboxComponent/CollisionShape2D.disabled = true
 	EventBus.enemy.enemy_died.emit()
-	
-	await hit_flash(1)
 	
 	queue_free()
 	

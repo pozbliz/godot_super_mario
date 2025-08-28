@@ -1,7 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://3gre6ncs5r13"]
+[gd_scene load_steps=14 format=3 uid="uid://3gre6ncs5r13"]
 
+[ext_resource type="Shader" uid="uid://d211i4vejnf33" path="res://entities/player/hit_flash.gdshader" id="1_20wwh"]
 [ext_resource type="Texture2D" uid="uid://c8fq256iyde55" path="res://assets/slime_death.png" id="1_n5g8r"]
 [ext_resource type="Script" uid="uid://ms10ei1qeri" path="res://entities/enemies/enemy_death.gd" id="2_g8s8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bcgqg"]
+shader = ExtResource("1_20wwh")
+shader_parameter/flash = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8s8j"]
 atlas = ExtResource("1_n5g8r")
@@ -68,6 +73,7 @@ animations = [{
 }]
 
 [node name="DeathAnimation" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_bcgqg")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cw5vt")
 animation = &"death"

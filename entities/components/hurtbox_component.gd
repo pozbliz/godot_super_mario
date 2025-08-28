@@ -8,9 +8,10 @@ extends Area2D
 func _ready():
 	area_entered.connect(_on_hurtbox_component_area_entered)
 	
-func _on_hurtbox_component_area_entered(area: Area2D) -> void:
+func _on_hurtbox_component_area_entered(area: AttackHitbox) -> void:
 	var area_owner = area.get_parent()
 	var self_owner = get_parent()
+	
 	for group in area_owner.get_groups():
 		if self_owner.is_in_group(group):
 			return
