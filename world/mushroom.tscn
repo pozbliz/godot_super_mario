@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://rsf1gj13uurf"]
+[gd_scene load_steps=6 format=3 uid="uid://rsf1gj13uurf"]
 
 [ext_resource type="Script" uid="uid://bf2o5i3cw7upi" path="res://world/mushroom.gd" id="1_l8q7w"]
+[ext_resource type="Texture2D" uid="uid://baa54secxgqup" path="res://assets/mushroom_powerup.png" id="2_87fjv"]
 [ext_resource type="PackedScene" uid="uid://deqpw5d6el03l" path="res://entities/components/pickup_component.tscn" id="2_picm0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftwfv"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87fjv"]
+radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l8q7w"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahot5"]
+radius = 12.0
 
 [node name="Mushroom" type="CharacterBody2D"]
 collision_layer = 64
@@ -13,14 +16,10 @@ collision_mask = 4
 script = ExtResource("1_l8q7w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_87fjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ftwfv")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.100394, 0.628056, 0.610977, 1)
+shape = SubResource("CapsuleShape2D_87fjv")
 
 [node name="PickupComponent" parent="." node_paths=PackedStringArray("collision_area") instance=ExtResource("2_picm0")]
 collision_area = NodePath("../Area2D")
@@ -29,4 +28,4 @@ collision_area = NodePath("../Area2D")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_l8q7w")
+shape = SubResource("CapsuleShape2D_ahot5")
