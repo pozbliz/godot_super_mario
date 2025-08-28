@@ -46,6 +46,7 @@ func _ready() -> void:
 	state_machine.change_state(states.idle)
 	EventBus.world.mushroom_picked_up.connect(grow)
 	add_to_group("player")
+	$HitboxComponent.area_entered.connect(bounce)
 	
 func _unhandled_input(_event: InputEvent) -> void:
 	if get_tree().paused:
@@ -68,6 +69,10 @@ func shrink() -> void:
 	growth_stage -= 1
 	clamp(growth_stage, 0, 1)
 	animation_player.play("shrink")
+	
+func bounce(area: HurtboxComponent) -> void:
+	if area.get_parent() is Enemy and state_machine.get_current_state() is FallingState:
+		state_machine.current_state.bounce()
 		
 func play_animation(action: String) -> void:
 	var animation = animation_map[action][growth_stage]

@@ -1,3 +1,4 @@
+class_name FallingState
 extends State
 
 
@@ -20,3 +21,7 @@ func physics_update(delta: float) -> void:
 			state_machine.change_state(player.states.idle)
 		else:
 			state_machine.change_state(player.states.run)
+			
+func bounce():
+	player.velocity.y = player.jump_velocity * 0.5
+	state_machine.change_state(player.states.jump)

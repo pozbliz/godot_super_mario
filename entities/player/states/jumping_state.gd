@@ -1,3 +1,4 @@
+class_name JumpingState
 extends State
 
 

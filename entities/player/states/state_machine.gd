@@ -25,3 +25,6 @@ func change_state(new_state: State):
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
+		
+func get_current_state() -> State:
+	return current_state
