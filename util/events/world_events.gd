@@ -8,7 +8,6 @@ signal options_menu_opened
 signal how_to_play_opened
 signal main_menu_opened
 signal back_button_pressed
-signal level_finished
 signal game_over
 signal score_changed(new_score: int)
 
@@ -16,3 +15,4 @@ signal score_changed(new_score: int)
 signal powerup_picked_up(powerup: PowerUp)
 signal mushroom_picked_up
 signal coin_picked_up
+signal level_finished

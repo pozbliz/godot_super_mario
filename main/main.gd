@@ -15,6 +15,7 @@ func _ready() -> void:
 	
 	EventBus.world.main_menu_opened.connect(exit_to_menu)
 	EventBus.player.player_died.connect(_on_player_died)
+	EventBus.world.level_finished.connect(_on_level_finished)
 	
 	new_game()
 	
@@ -71,6 +72,10 @@ func respawn_player():
 	player.respawn()
 	player.state_machine.set_process(true)
 	player.state_machine.set_physics_process(true)
+	
+func _on_level_finished():
+	pass
+	# TODO: show level finished screen
 	
 func game_over():
 	EventBus.world.game_over.emit()

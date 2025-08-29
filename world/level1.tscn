@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://xw2vx8ei4mx3"]
+[gd_scene load_steps=11 format=4 uid="uid://xw2vx8ei4mx3"]
 
 [ext_resource type="Script" uid="uid://cemv10qdeicab" path="res://world/level.gd" id="1_7edtc"]
 [ext_resource type="Texture2D" uid="uid://bca5vog2t4md4" path="res://assets/tile_map.png" id="2_6dt51"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wr2mf0tbuie3" path="res://world/coin.tscn" id="5_hsmh8"]
 [ext_resource type="PackedScene" uid="uid://dhclnmgndq320" path="res://world/moving_platform.tscn" id="6_6dt51"]
 [ext_resource type="PackedScene" uid="uid://fwgvm4joli1j" path="res://entities/enemies/slime.tscn" id="7_jjnkf"]
+[ext_resource type="PackedScene" uid="uid://fvyivduvyupl" path="res://world/goal_flag.tscn" id="8_m16om"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u2o0"]
 texture = ExtResource("2_6dt51")
@@ -129,3 +130,7 @@ position = Vector2(695, -1348)
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-415, 32)
+
+[node name="GoalFlag" parent="." instance=ExtResource("8_m16om")]
+position = Vector2(1697, -1340)
+scale = Vector2(2, 2)
