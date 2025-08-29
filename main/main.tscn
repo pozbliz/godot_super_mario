@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnbgjoxenlktl"]
+[gd_scene load_steps=11 format=3 uid="uid://cnbgjoxenlktl"]
 
 [ext_resource type="Script" uid="uid://y2j6ea6ia8rh" path="res://main/main.gd" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://c1mqhc4sqbj81" path="res://world/world.gd" id="1_bsumw"]
 [ext_resource type="PackedScene" uid="uid://csxc6u0b75g7s" path="res://entities/player/player.tscn" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://cc6rqji6i116i" path="res://ui/hud.tscn" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://xcxr1yg4m7oc" path="res://ui/how_to_play_menu.tscn" id="6_0i4oc"]
-[ext_resource type="PackedScene" uid="uid://fwgvm4joli1j" path="res://entities/enemies/slime.tscn" id="6_4dugh"]
 [ext_resource type="PackedScene" uid="uid://noie5pq3tygd" path="res://ui/pause_menu.tscn" id="6_67ri8"]
 [ext_resource type="PackedScene" uid="uid://bjmmqxeu5fh8s" path="res://ui/level_finished_screen.tscn" id="7_67ri8"]
 [ext_resource type="PackedScene" uid="uid://cla6hhj7i1fvv" path="res://ui/game_over_screen.tscn" id="8_grrlh"]
@@ -22,23 +21,6 @@ script = ExtResource("1_bsumw")
 [node name="Player" parent="World" instance=ExtResource("3_c651c")]
 texture_filter = 1
 position = Vector2(33, 518)
-
-[node name="Enemies" type="Node2D" parent="World"]
-
-[node name="Slime3" parent="World/Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(1402, 484)
-
-[node name="Slime" parent="World/Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(497, 421)
-
-[node name="Slime2" parent="World/Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(1083, 293)
-
-[node name="Slime4" parent="World/Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(1285, -188)
-
-[node name="Slime5" parent="World/Enemies" instance=ExtResource("6_4dugh")]
-position = Vector2(1175, -216)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
