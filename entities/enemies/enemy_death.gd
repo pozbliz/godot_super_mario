@@ -3,9 +3,9 @@ extends AnimatedSprite2D
 
 func _ready():
 	hit_flash(1)
-	play("death")
 	animation_finished.connect(_on_animation_finished)
-
+	play("death")
+	
 func _on_animation_finished() -> void:
 	queue_free()
 	

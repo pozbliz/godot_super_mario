@@ -67,8 +67,8 @@ func die():
 	$HitboxComponent/CollisionShape2D.disabled = true
 	EventBus.enemy_hit.emit()
 	
-	queue_free()
+	call_deferred("queue_free")
 	
 	var death_anim = death_scene.instantiate()
-	death_anim.global_position = global_position
+	death_anim.position = get_parent().to_local(global_position)
 	get_parent().add_child(death_anim)
