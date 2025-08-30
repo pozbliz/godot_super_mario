@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	hide()
 	
-	EventBus.world.game_over.connect(open)
+	EventBus.game_over.connect(open)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 
 func open():
@@ -22,4 +22,4 @@ func close():
 	hide()
 	
 func _on_main_menu_button_pressed():
-	EventBus.world.main_menu_opened.emit()
+	EventBus.main_menu_opened.emit()

@@ -15,11 +15,11 @@ func _ready() -> void:
 	
 	hide()
 	
-	EventBus.world.game_paused.connect(open)
-	EventBus.world.how_to_play_opened.connect(close)
-	EventBus.world.options_menu_opened.connect(close)
-	EventBus.world.back_button_pressed.connect(open)
-	EventBus.world.game_resumed.connect(close)
+	EventBus.game_paused.connect(open)
+	EventBus.how_to_play_opened.connect(close)
+	EventBus.options_menu_opened.connect(close)
+	EventBus.back_button_pressed.connect(open)
+	EventBus.game_resumed.connect(close)
 
 	resume_game_button.pressed.connect(_on_resume_game_button_pressed)
 	how_to_play_button.pressed.connect(_on_how_to_play_button_pressed)
@@ -34,17 +34,17 @@ func close():
 	hide()
 	
 func _on_resume_game_button_pressed():
-	EventBus.world.game_resumed.emit()
+	EventBus.game_resumed.emit()
 	close()
 	
 func _on_how_to_play_button_pressed():
-	EventBus.world.how_to_play_opened.emit()
+	EventBus.how_to_play_opened.emit()
 	close()
 	
 func _on_options_button_pressed():
-	EventBus.world.options_menu_opened.emit()
+	EventBus.options_menu_opened.emit()
 	close()
 	
 func _on_main_menu_button_pressed():
-	EventBus.world.main_menu_opened.emit()
+	EventBus.main_menu_opened.emit()
 	close()

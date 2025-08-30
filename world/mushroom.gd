@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 	
 func _on_powerup_pickup():
-	EventBus.world.mushroom_picked_up.emit()
+	EventBus.mushroom_picked_up.emit()
 	print("mushroom picked up")

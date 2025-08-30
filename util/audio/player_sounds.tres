@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SoundConfig" load_steps=2 format=3 uid="uid://c1pnxlvly2jfr"]
+
+[ext_resource type="Script" uid="uid://bfm6pkyh82pio" path="res://util/audio/sound_config.gd" id="1_iih8x"]
+
+[resource]
+script = ExtResource("1_iih8x")
+sounds = {}
+metadata/_custom_type_script = "uid://bfm6pkyh82pio"

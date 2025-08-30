@@ -354,8 +354,8 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_wvtmh")]
-collision_layer = 16
-collision_mask = 32
+collision_layer = 0
+collision_mask = 16
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -364,7 +364,7 @@ shape = SubResource("RectangleShape2D_we0b7")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("4_wvtmh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

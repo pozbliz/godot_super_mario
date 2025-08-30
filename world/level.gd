@@ -4,7 +4,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	EventBus.player.player_died.connect(_on_player_died)
+	EventBus.player_died.connect(_on_player_died)
 
 func get_player_spawn_position() -> Vector2:
 	return player_spawn.global_position

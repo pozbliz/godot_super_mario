@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	hide()
 	
-	EventBus.world.how_to_play_opened.connect(open)
+	EventBus.how_to_play_opened.connect(open)
 	back_button.pressed.connect(_on_back_button_pressed)
 
 func open():
@@ -22,5 +22,5 @@ func close():
 	hide()
 	
 func _on_back_button_pressed():
-	EventBus.world.back_button_pressed.emit()
+	EventBus.back_button_pressed.emit()
 	close()

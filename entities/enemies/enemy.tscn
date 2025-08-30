@@ -52,7 +52,7 @@ shape = SubResource("CircleShape2D_w4yt1")
 [node name="HealthComponent" parent="." instance=ExtResource("1_wqcwe")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5lf1o")]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 32
 health_component = NodePath("../HealthComponent")
 
@@ -61,8 +61,8 @@ position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_w4yt1")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_msovg")]
-collision_layer = 32
-collision_mask = 16
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 7)

@@ -65,7 +65,7 @@ func die():
 	# Release enemy immediately and instantiate death animation scene instead
 	$HitboxComponent.monitoring = false
 	$HitboxComponent/CollisionShape2D.disabled = true
-	EventBus.enemy.enemy_died.emit()
+	EventBus.enemy_hit.emit()
 	
 	queue_free()
 	

@@ -44,8 +44,8 @@ var animation_map = {
 
 func _ready() -> void:
 	state_machine.change_state(states.idle)
-	EventBus.world.mushroom_picked_up.connect(grow)
-	EventBus.world.level_finished.connect(_on_level_finished)
+	EventBus.mushroom_picked_up.connect(grow)
+	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("player")
 	$HitboxComponent.area_entered.connect(bounce)
 	
@@ -116,7 +116,7 @@ func die() -> void:
 	sprite.animation_finished.connect(_on_death_animation_finished)
 
 func _on_death_animation_finished():
-	EventBus.player.player_died.emit()
+	EventBus.player_died.emit()
 	
 func respawn():
 	is_dead = false

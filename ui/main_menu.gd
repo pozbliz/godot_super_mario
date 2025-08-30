@@ -10,8 +10,8 @@ extends Control
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	EventBus.world.main_menu_opened.connect(open)
-	EventBus.world.back_button_pressed.connect(open)
+	EventBus.main_menu_opened.connect(open)
+	EventBus.back_button_pressed.connect(open)
 	start_game_button.pressed.connect(start_game)
 	how_to_play_button.pressed.connect(_on_how_to_play_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
@@ -36,11 +36,11 @@ func _on_exit_game_button_pressed():
 	get_tree().quit()
 
 func _on_options_button_pressed():
-	EventBus.world.options_menu_opened.emit()
+	EventBus.options_menu_opened.emit()
 	close()
 	
 func _on_how_to_play_button_pressed():
-	EventBus.world.how_to_play_opened.emit()
+	EventBus.how_to_play_opened.emit()
 	close()
 	
 func start_game():
