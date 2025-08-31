@@ -25,6 +25,7 @@ func _ready() -> void:
 	### PLAYER ###
 	EventBus.player_hit.connect(_on_player_hit)
 	EventBus.player_died.connect(_on_player_died)
+	EventBus.player_respawned.connect(_on_player_respawned)
 	
 	### ENEMY ###
 	EventBus.enemy_hit.connect(_on_enemy_hit)
@@ -43,7 +44,11 @@ func _on_player_hit():
 	AudioManager.play(player_sounds["player_hit"])
 
 func _on_player_died():
+	AudioManager.stop_music()
 	AudioManager.play(player_sounds["player_died"])
+	
+func _on_player_respawned(level: int):
+	AudioManager.play_music(music[level])
 	
 	
 ### ENEMIES ###
@@ -59,9 +64,10 @@ func _on_mushroom_picked_up():
 	AudioManager.play(world_sounds["mushroom_picked_up"])
 	
 func _on_level_finished():
+	AudioManager.stop_music()
 	AudioManager.play(world_sounds["level_finished"])
 	
 
 ### MUSIC ###
 func _on_level_started(level: int):
-	AudioManager.play(music[level])
+	AudioManager.play_music(music[level])

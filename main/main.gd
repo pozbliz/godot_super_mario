@@ -78,6 +78,7 @@ func respawn_player():
 	player.respawn()
 	player.state_machine.set_process(true)
 	player.state_machine.set_physics_process(true)
+	EventBus.player_respawned.emit(next_level)
 	
 func _on_level_finished():
 	player.state_machine.set_process(true)
