@@ -22,5 +22,6 @@ func close():
 	hide()
 	
 func _on_back_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.back_button_pressed.emit()
 	close()

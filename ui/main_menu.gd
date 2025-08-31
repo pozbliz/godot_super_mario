@@ -33,16 +33,21 @@ func close():
 	hide()
 	
 func _on_exit_game_button_pressed():
+	EventBus.menu_selected.emit()
 	get_tree().quit()
 
 func _on_options_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.options_menu_opened.emit()
 	close()
 	
 func _on_how_to_play_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.how_to_play_opened.emit()
 	close()
 	
 func start_game():
+	EventBus.menu_selected.emit()
+	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://main/main.tscn")
 	

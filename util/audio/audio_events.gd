@@ -1,16 +1,16 @@
 extends Node
 
 
-var player_sounds = {
+var player = {
 	"player_hit": "res://assets/sound/player/player_hit.wav",
 	"player_died": "res://assets/sound/player/player_died.wav",
 }
 
-var enemy_sounds = {
+var enemy = {
 	"enemy_hit": "res://assets/sound/enemy/enemy_hit.wav",
 }
 
-var world_sounds = {
+var world = {
 	"mushroom_picked_up": "res://assets/sound/world/mushroom_picked_up.wav",
 	"coin_picked_up": "res://assets/sound/world/coin_picked_up.wav",
 	"level_finished": "res://assets/sound/world/level_finished.wav",
@@ -18,6 +18,10 @@ var world_sounds = {
 
 var music = {
 	1: "res://assets/sound/music/Hillbilly Swing.mp3",
+}
+
+var menu = {
+	"select": "res://assets/sound/menu/menu_select.wav"
 }
 
 
@@ -38,14 +42,17 @@ func _ready() -> void:
 	### MUSIC ###
 	EventBus.level_started.connect(_on_level_started)
 	
+	### MENU ###
+	EventBus.menu_selected.connect(_on_menu_selected)
+	
 
 ### PLAYER ###
 func _on_player_hit():
-	AudioManager.play(player_sounds["player_hit"])
+	AudioManager.play(player["player_hit"])
 
 func _on_player_died():
 	AudioManager.stop_music()
-	AudioManager.play(player_sounds["player_died"])
+	AudioManager.play(player["player_died"])
 	
 func _on_player_respawned(level: int):
 	AudioManager.play_music(music[level])
@@ -53,21 +60,26 @@ func _on_player_respawned(level: int):
 	
 ### ENEMIES ###
 func _on_enemy_hit():
-	AudioManager.play(enemy_sounds["enemy_hit"])
+	AudioManager.play(enemy["enemy_hit"])
 
 
 ### WORLD ###
 func _on_coin_picked_up():
-	AudioManager.play(world_sounds["coin_picked_up"])
+	AudioManager.play(world["coin_picked_up"])
 	
 func _on_mushroom_picked_up():
-	AudioManager.play(world_sounds["mushroom_picked_up"])
+	AudioManager.play(world["mushroom_picked_up"])
 	
 func _on_level_finished():
 	AudioManager.stop_music()
-	AudioManager.play(world_sounds["level_finished"])
+	AudioManager.play(world["level_finished"])
 	
 
 ### MUSIC ###
 func _on_level_started(level: int):
 	AudioManager.play_music(music[level])
+	
+
+### MENU ###
+func _on_menu_selected():
+	AudioManager.play(menu["select"])

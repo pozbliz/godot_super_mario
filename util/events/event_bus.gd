@@ -21,6 +21,7 @@ signal main_menu_opened
 signal back_button_pressed
 signal game_over
 signal score_changed(new_score: int)
+signal menu_selected
 
 # Gameplay Signals
 signal powerup_picked_up(powerup: PowerUp)

@@ -22,4 +22,5 @@ func close():
 	hide()
 	
 func _on_main_menu_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.main_menu_opened.emit()

@@ -34,17 +34,21 @@ func close():
 	hide()
 	
 func _on_resume_game_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.game_resumed.emit()
 	close()
 	
 func _on_how_to_play_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.how_to_play_opened.emit()
 	close()
 	
 func _on_options_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.options_menu_opened.emit()
 	close()
 	
 func _on_main_menu_button_pressed():
+	EventBus.menu_selected.emit()
 	EventBus.main_menu_opened.emit()
 	close()
