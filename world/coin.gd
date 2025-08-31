@@ -4,3 +4,4 @@ extends Area2D
 
 func _on_powerup_pickup():
 	EventBus.coin_picked_up.emit()
+	print("coin picked up")

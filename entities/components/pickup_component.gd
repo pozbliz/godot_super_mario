@@ -13,5 +13,4 @@ func _on_collision_area_body_entered(body: CharacterBody2D) -> void:
 		return
 	
 	get_parent()._on_powerup_pickup()
-	EventBus.powerup_picked_up.emit(self)
 	get_parent().queue_free()

@@ -22,4 +22,3 @@ func _physics_process(delta: float) -> void:
 	
 func _on_powerup_pickup():
 	EventBus.mushroom_picked_up.emit()
-	print("mushroom picked up")

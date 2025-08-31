@@ -113,9 +113,6 @@ func die() -> void:
 	state_machine.set_physics_process(false)
 	
 	sprite.play("death")
-	sprite.animation_finished.connect(_on_death_animation_finished)
-
-func _on_death_animation_finished():
 	EventBus.player_died.emit()
 	
 func respawn():

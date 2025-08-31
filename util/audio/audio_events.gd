@@ -11,8 +11,8 @@ var enemy_sounds = {
 }
 
 var world_sounds = {
-	"mushroom_picked_up": "res://assets/sound/world.powerUp.wav",
-	"coin_picked_up": "res://assets/sound/world.pickupCoin.wav",
+	"mushroom_picked_up": "res://assets/sound/world/mushroom_picked_up.wav",
+	"coin_picked_up": "res://assets/sound/world/coin_picked_up.wav",
 	"level_finished": "res://assets/sound/world/level_finished.wav",
 }
 
@@ -28,6 +28,7 @@ func _ready() -> void:
 	### WORLD ###
 	EventBus.coin_picked_up.connect(_on_coin_picked_up)
 	EventBus.mushroom_picked_up.connect(_on_mushroom_picked_up)
+	EventBus.level_finished.connect(_on_level_finished)
 	
 
 ### PLAYER ###
@@ -49,3 +50,6 @@ func _on_coin_picked_up():
 	
 func _on_mushroom_picked_up():
 	AudioManager.play(world_sounds["mushroom_picked_up"])
+	
+func _on_level_finished():
+	AudioManager.play(world_sounds["level_finished"])
