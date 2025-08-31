@@ -16,6 +16,10 @@ var world_sounds = {
 	"level_finished": "res://assets/sound/world/level_finished.wav",
 }
 
+var music = {
+	1: "res://assets/sound/music/Hillbilly Swing.mp3",
+}
+
 
 func _ready() -> void:
 	### PLAYER ###
@@ -29,6 +33,9 @@ func _ready() -> void:
 	EventBus.coin_picked_up.connect(_on_coin_picked_up)
 	EventBus.mushroom_picked_up.connect(_on_mushroom_picked_up)
 	EventBus.level_finished.connect(_on_level_finished)
+	
+	### MUSIC ###
+	EventBus.level_started.connect(_on_level_started)
 	
 
 ### PLAYER ###
@@ -53,3 +60,8 @@ func _on_mushroom_picked_up():
 	
 func _on_level_finished():
 	AudioManager.play(world_sounds["level_finished"])
+	
+
+### MUSIC ###
+func _on_level_started(level: int):
+	AudioManager.play(music[level])

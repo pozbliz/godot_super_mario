@@ -4,7 +4,11 @@ extends Node
 var current_lives: int
 var max_lives: int = 3
 var current_level: Node = null
+var next_level: int = 1
 var level1_scene: PackedScene = preload("res://world/level1.tscn")
+var levels: Dictionary = {
+	1: "res://world/level1.tscn"
+}
 
 @onready var player: Player = $"../World/Player"
 @onready var level: Node2D = $"../World/Level"
@@ -38,7 +42,7 @@ func new_game():
 	player.set_process_unhandled_input(true)
 	EventBus.lives_updated.emit(current_lives)
 	
-	load_level(level1_scene)
+	load_level(next_level, level1_scene)
 	
 func pause_game():
 	get_tree().paused = true
@@ -48,7 +52,7 @@ func resume_game():
 	get_tree().paused = false
 	EventBus.game_resumed.emit()
 	
-func load_level(level_scene: PackedScene):
+func load_level(next_level, level_scene: PackedScene):
 	if current_level:
 		current_level.queue_free()
 		
@@ -57,6 +61,8 @@ func load_level(level_scene: PackedScene):
 
 	player.global_position = current_level.get_player_spawn_position()
 	player.is_dead = false
+	
+	EventBus.level_started.emit(next_level)
 	
 func _on_player_died():
 	current_lives -= 1
@@ -74,8 +80,9 @@ func respawn_player():
 	player.state_machine.set_physics_process(true)
 	
 func _on_level_finished():
-	pass
-	# TODO: show level finished screen
+	player.state_machine.set_process(true)
+	player.state_machine.set_physics_process(true)
+	next_level += 1
 	
 func game_over():
 	EventBus.game_over.emit()

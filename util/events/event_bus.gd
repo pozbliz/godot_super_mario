@@ -13,6 +13,7 @@ signal enemy_hit
 # UI Signals
 signal game_paused
 signal game_resumed
+signal level_started(level: int)
 signal options_menu_opened
 signal how_to_play_opened
 signal main_menu_opened
