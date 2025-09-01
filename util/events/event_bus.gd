@@ -26,5 +26,6 @@ signal menu_selected
 # Gameplay Signals
 signal powerup_picked_up(powerup: PowerUp)
 signal mushroom_picked_up
+signal pipe_entered
 signal coin_picked_up
 signal level_finished

@@ -13,6 +13,7 @@ var enemy = {
 var world = {
 	"mushroom_picked_up": "res://assets/sound/world/mushroom_picked_up.wav",
 	"coin_picked_up": "res://assets/sound/world/coin_picked_up.wav",
+	"pipe_entered": "mushroom_picked_up.wav", # TODO: create pipe sound
 	"level_finished": "res://assets/sound/world/level_finished.wav",
 }
 
@@ -37,6 +38,7 @@ func _ready() -> void:
 	### WORLD ###
 	EventBus.coin_picked_up.connect(_on_coin_picked_up)
 	EventBus.mushroom_picked_up.connect(_on_mushroom_picked_up)
+	EventBus.pipe_entered.connect(_on_pipe_entered)
 	EventBus.level_finished.connect(_on_level_finished)
 	
 	### MUSIC ###
@@ -69,6 +71,9 @@ func _on_coin_picked_up():
 	
 func _on_mushroom_picked_up():
 	AudioManager.play(world["mushroom_picked_up"])
+	
+func _on_pipe_entered():
+	AudioManager.play(world["pipe_entered"])
 	
 func _on_level_finished():
 	AudioManager.stop_music()

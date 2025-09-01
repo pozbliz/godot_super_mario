@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://csxc6u0b75g7s"]
+[gd_scene load_steps=55 format=3 uid="uid://csxc6u0b75g7s"]
 
 [ext_resource type="Shader" uid="uid://d211i4vejnf33" path="res://entities/player/hit_flash.gdshader" id="1_mtric"]
 [ext_resource type="Script" uid="uid://mh4l7l3pwbud" path="res://entities/player/player.gd" id="1_oul6g"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://braib0r8bgnyh" path="res://assets/player_small_jump.png" id="8_t1t22"]
 [ext_resource type="Texture2D" uid="uid://k0ougielew0r" path="res://assets/player_small_run.png" id="9_50fht"]
 [ext_resource type="PackedScene" uid="uid://dulcsqsnodhl6" path="res://entities/components/hurtbox_component.tscn" id="9_wvtmh"]
+[ext_resource type="Script" uid="uid://c6bbpryhcnt4p" path="res://entities/player/states/pipe_state.gd" id="21_eyb6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mtric"]
 shader = ExtResource("1_mtric")
@@ -389,6 +390,10 @@ script = ExtResource("6_8t03j")
 [node name="Duck" type="Node" parent="StateMachine"]
 script = ExtResource("7_2ieo8")
 
+[node name="Pipe" type="Node" parent="StateMachine"]
+script = ExtResource("21_eyb6c")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
+limit_right = 2300
 limit_bottom = 600

@@ -19,6 +19,7 @@ var is_jumping: bool = false
 var is_dead: bool = false
 var invincibility_timer: float = 1.0
 var is_invincible: bool = false
+var current_pipe: Pipe = null
 var animation_map = {
 	"idle": ["small_idle", "big_idle"],
 	"run":  ["small_run", "big_run"],
@@ -36,7 +37,8 @@ var animation_map = {
 	"run": $StateMachine/Run,
 	"jump": $StateMachine/Jump,
 	"fall": $StateMachine/Fall,
-	"duck": $StateMachine/Duck
+	"duck": $StateMachine/Duck,
+	"pipe": $StateMachine/Pipe
 }
 @onready var growth_stage: int = 0
 @onready var viewport_size: Vector2 = get_viewport_rect().size

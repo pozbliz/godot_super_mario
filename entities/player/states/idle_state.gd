@@ -16,5 +16,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state(player.states.jump)
 	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		state_machine.change_state(player.states.run)
-	elif Input.is_action_just_pressed("duck"):
+	elif player.current_pipe and Input.is_action_just_pressed("duck"):
+		state_machine.change_state(player.states.pipe)
+	elif not player.current_pipe and Input.is_action_just_pressed("duck"):
 		state_machine.change_state(player.states.duck)

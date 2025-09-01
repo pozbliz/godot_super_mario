@@ -8,6 +8,8 @@ func enter():
 	
 func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
+	player.move_and_slide()
+	
 	if not Input.is_action_pressed("duck"):
 		state_machine.change_state(player.states.idle)
 	elif not player.is_on_floor():

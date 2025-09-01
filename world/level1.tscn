@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://xw2vx8ei4mx3"]
+[gd_scene load_steps=12 format=4 uid="uid://xw2vx8ei4mx3"]
 
 [ext_resource type="Script" uid="uid://cemv10qdeicab" path="res://world/level.gd" id="1_7edtc"]
 [ext_resource type="Texture2D" uid="uid://bca5vog2t4md4" path="res://assets/tile_map.png" id="2_6dt51"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhclnmgndq320" path="res://world/moving_platform.tscn" id="6_6dt51"]
 [ext_resource type="PackedScene" uid="uid://fwgvm4joli1j" path="res://entities/enemies/slime.tscn" id="7_jjnkf"]
 [ext_resource type="PackedScene" uid="uid://fvyivduvyupl" path="res://world/goal_flag.tscn" id="8_m16om"]
+[ext_resource type="PackedScene" uid="uid://dlgq2u1jn4key" path="res://world/warp_pipe.tscn" id="9_hsmh8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u2o0"]
 texture = ExtResource("2_6dt51")
@@ -110,12 +111,6 @@ position = Vector2(3, -65)
 [node name="Slime2" parent="Enemies" instance=ExtResource("7_jjnkf")]
 position = Vector2(505, -220)
 
-[node name="Slime4" parent="Enemies" instance=ExtResource("7_jjnkf")]
-position = Vector2(1285, -188)
-
-[node name="Slime5" parent="Enemies" instance=ExtResource("7_jjnkf")]
-position = Vector2(1175, -216)
-
 [node name="Slime6" parent="Enemies" instance=ExtResource("7_jjnkf")]
 position = Vector2(-173, -1180)
 
@@ -127,6 +122,16 @@ position = Vector2(537, -1346)
 
 [node name="Slime9" parent="Enemies" instance=ExtResource("7_jjnkf")]
 position = Vector2(695, -1348)
+
+[node name="Pipes" type="Node2D" parent="."]
+
+[node name="Pipe" parent="Pipes" instance=ExtResource("9_hsmh8")]
+position = Vector2(691, -156)
+linked_pipe = NodePath("../Pipe2")
+
+[node name="Pipe2" parent="Pipes" instance=ExtResource("9_hsmh8")]
+position = Vector2(803, -668)
+linked_pipe = NodePath("../Pipe")
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-415, 32)
