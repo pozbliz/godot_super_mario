@@ -2,7 +2,7 @@ class_name Pipe
 extends StaticBody2D
 
 
-@export var linked_pipe: NodePath
+@export var linked_pipe: Pipe
 
 var exit_point: Marker2D
 

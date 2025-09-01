@@ -125,11 +125,11 @@ position = Vector2(695, -1348)
 
 [node name="Pipes" type="Node2D" parent="."]
 
-[node name="Pipe" parent="Pipes" instance=ExtResource("9_hsmh8")]
+[node name="Pipe" parent="Pipes" node_paths=PackedStringArray("linked_pipe") instance=ExtResource("9_hsmh8")]
 position = Vector2(691, -156)
 linked_pipe = NodePath("../Pipe2")
 
-[node name="Pipe2" parent="Pipes" instance=ExtResource("9_hsmh8")]
+[node name="Pipe2" parent="Pipes" node_paths=PackedStringArray("linked_pipe") instance=ExtResource("9_hsmh8")]
 position = Vector2(803, -668)
 linked_pipe = NodePath("../Pipe")
 

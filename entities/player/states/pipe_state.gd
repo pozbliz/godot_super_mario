@@ -8,10 +8,9 @@ var enter_duration: float = 1.0
 
 
 func enter():
-	print("entering pipe state")
 	EventBus.pipe_entered.emit()
 	player.velocity = Vector2.ZERO
-	player.play_animation("idle")
+	player.play_animation("idle") # TODO: add pipe animation
 	player.world_collider.disabled = true
 	initial_position = player.global_position
 	timer = 0.0
@@ -19,8 +18,8 @@ func enter():
 func physics_update(delta: float) -> void:
 	timer += delta
 	if timer >= enter_duration:
-		if player.current_pipe and player.current_pipe.linked_pipe != NodePath(""):
-			var destination_pipe = player.current_pipe.get_node(player.current_pipe.linked_pipe)
+		if player.current_pipe and player.current_pipe.linked_pipe:
+			var destination_pipe = player.current_pipe.linked_pipe
 			var exit_pos = destination_pipe.exit_point.global_position
 
 			player.global_position = exit_pos
