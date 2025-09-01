@@ -14,7 +14,7 @@ var levels: Dictionary = {
 @onready var level: Node2D = $"../World/Level"
 
 
-func _ready() -> void:
+func _ready() -> void: # TODO: add parallax background
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	EventBus.main_menu_opened.connect(exit_to_menu)
@@ -81,8 +81,8 @@ func respawn_player():
 	EventBus.player_respawned.emit(next_level)
 	
 func _on_level_finished():
-	player.state_machine.set_process(true)
-	player.state_machine.set_physics_process(true)
+	player.state_machine.set_process(false)
+	player.state_machine.set_physics_process(false)
 	next_level += 1
 	
 func game_over():
