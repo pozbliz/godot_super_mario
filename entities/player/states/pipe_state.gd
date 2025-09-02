@@ -10,8 +10,7 @@ var enter_duration: float = 1.0
 func enter():
 	EventBus.pipe_entered.emit()
 	player.velocity = Vector2.ZERO
-	player.play_animation("idle") # TODO: add pipe animation
-	player.world_collider.disabled = true
+	player.play_animation("pipe")
 	initial_position = player.global_position
 	timer = 0.0
 	
@@ -23,5 +22,5 @@ func physics_update(delta: float) -> void:
 			var exit_pos = destination_pipe.exit_point.global_position
 
 			player.global_position = exit_pos
-			player.world_collider.disabled = false
+			await player.play_animation("pipe", true) # TODO: fix animation not playing when exiting pipe
 			state_machine.change_state(player.states.idle)

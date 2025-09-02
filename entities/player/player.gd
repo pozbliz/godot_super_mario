@@ -25,7 +25,8 @@ var animation_map = {
 	"run":  ["small_run", "big_run"],
 	"jump": ["small_jump", "big_jump"],
 	"fall": ["small_fall", "big_fall"],
-	"duck": ["small_duck", "big_duck"]
+	"duck": ["small_duck", "big_duck"],
+	"pipe": ["small_pipe", "big_pipe"]
 }
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -77,9 +78,14 @@ func bounce(area: HurtboxComponent) -> void:
 	if area.get_parent() is Enemy and state_machine.get_current_state() is FallingState:
 		state_machine.current_state.bounce()
 		
-func play_animation(action: String) -> void:
+func play_animation(action: String, backwards: bool = false) -> Signal:
 	var animation = animation_map[action][growth_stage]
-	sprite.play(animation)
+	if backwards:
+		sprite.play_backwards(animation)
+	else:
+		sprite.play(animation)
+		
+	return sprite.animation_finished
 	
 func take_damage() -> void:
 	if is_invincible:
