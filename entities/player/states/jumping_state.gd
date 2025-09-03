@@ -16,6 +16,7 @@ func enter():
 	player.jump_held_time = 0.0
 	player.is_jumping = true
 	player.play_animation("jump")
+	EventBus.jump_pressed.emit()
 	
 func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * player.input_direction_x

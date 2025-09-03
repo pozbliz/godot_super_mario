@@ -4,6 +4,7 @@ extends Node
 var player = {
 	"player_hit": "res://assets/sound/player/player_hit.wav",
 	"player_died": "res://assets/sound/player/player_died.wav",
+	"jump_pressed": "res://assets/sound/player/jump.wav",
 }
 
 var enemy = {
@@ -13,7 +14,7 @@ var enemy = {
 var world = {
 	"mushroom_picked_up": "res://assets/sound/world/mushroom_picked_up.wav",
 	"coin_picked_up": "res://assets/sound/world/coin_picked_up.wav",
-	"pipe_entered": "mushroom_picked_up.wav", # TODO: create pipe sound
+	"pipe_entered": "res://assets/sound/world/pipe_entered.wav",
 	"level_finished": "res://assets/sound/world/level_finished.wav",
 }
 
@@ -31,6 +32,7 @@ func _ready() -> void:
 	EventBus.player_hit.connect(_on_player_hit)
 	EventBus.player_died.connect(_on_player_died)
 	EventBus.player_respawned.connect(_on_player_respawned)
+	EventBus.jump_pressed.connect(_on_jump_pressed)
 	
 	### ENEMY ###
 	EventBus.enemy_hit.connect(_on_enemy_hit)
@@ -59,6 +61,8 @@ func _on_player_died():
 func _on_player_respawned(level: int):
 	AudioManager.play_music(music[level])
 	
+func _on_jump_pressed():
+	AudioManager.play(player["jump_pressed"])
 	
 ### ENEMIES ###
 func _on_enemy_hit():

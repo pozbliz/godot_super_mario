@@ -6,6 +6,7 @@ signal player_hit
 signal player_died
 signal player_respawned(level: int)
 signal lives_updated(current_lives)
+signal jump_pressed
 
 ### ENEMY ###
 signal enemy_hit
