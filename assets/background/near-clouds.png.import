@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgv4wemdi40kb"
-path="res://.godot/imported/sunny-mountains-far-back.png-62a4ec827abda194e8fac37c3db28561.ctex"
+uid="uid://cbw60mcqfmdl8"
+path="res://.godot/imported/near-clouds.png-77abe966521e2a4710838d3c7dbf8b9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/sunny-mountains-far-back.png"
-dest_files=["res://.godot/imported/sunny-mountains-far-back.png-62a4ec827abda194e8fac37c3db28561.ctex"]
+source_file="res://assets/background/near-clouds.png"
+dest_files=["res://.godot/imported/near-clouds.png-77abe966521e2a4710838d3c7dbf8b9f.ctex"]
 
 [params]
 

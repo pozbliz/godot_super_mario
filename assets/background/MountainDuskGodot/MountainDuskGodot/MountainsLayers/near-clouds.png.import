@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buxbrjmsldkj4"
-path="res://.godot/imported/sunny-mountains-hills.png-c9bfd2a7f242fdea98048d4372190477.ctex"
+uid="uid://nei8g3fblyr7"
+path="res://.godot/imported/near-clouds.png-b0b4f2fd73566bffa7c954f6e6b0e560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/sunny-mountains-hills.png"
-dest_files=["res://.godot/imported/sunny-mountains-hills.png-c9bfd2a7f242fdea98048d4372190477.ctex"]
+source_file="res://MountainsLayers/near-clouds.png"
+dest_files=["res://.godot/imported/near-clouds.png-b0b4f2fd73566bffa7c954f6e6b0e560.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b73crcoeuxcqv"
-path="res://.godot/imported/sunny-mountains-sky.png-1c16f43188a2fb2adfae3d55cf023b3e.ctex"
+uid="uid://dxjs1s2ge2yl0"
+path="res://.godot/imported/trees.png-2fdb172a787dc3b3a9a01823f47020a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/sunny-mountains-sky.png"
-dest_files=["res://.godot/imported/sunny-mountains-sky.png-1c16f43188a2fb2adfae3d55cf023b3e.ctex"]
+source_file="res://MountainsLayers/trees.png"
+dest_files=["res://.godot/imported/trees.png-2fdb172a787dc3b3a9a01823f47020a9.ctex"]
 
 [params]
 
