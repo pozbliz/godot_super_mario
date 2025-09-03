@@ -31,4 +31,4 @@ position = Vector2(0, -18.125)
 shape = SubResource("RectangleShape2D_1wrd3")
 
 [node name="ExitPoint" type="Marker2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -27)

@@ -11,6 +11,7 @@ var exit_point: Marker2D
 
 func _ready() -> void:
 	area_2d.body_entered.connect(_on_body_entered)
+	area_2d.body_exited.connect(_on_body_exited)
 	exit_point = $ExitPoint
 	
 func _on_body_entered(body: Player):
