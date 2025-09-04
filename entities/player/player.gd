@@ -48,7 +48,6 @@ var animation_map = {
 func _ready() -> void:
 	state_machine.change_state(states.idle)
 	EventBus.mushroom_picked_up.connect(grow)
-	EventBus.level_finished.connect(_on_level_finished)
 	add_to_group("player")
 	$HitboxComponent.area_entered.connect(bounce)
 	
@@ -127,7 +126,3 @@ func respawn():
 	is_dead = false
 	is_invincible = false
 	growth_stage = 0
-	
-func _on_level_finished():
-	pass
-	# TODO: play level finished animation

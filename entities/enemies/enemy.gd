@@ -2,7 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 
-signal enemy_died
+signal enemy_died(score)
 
 @export var enemy_data: EnemyData
 @export var death_scene: PackedScene
@@ -11,6 +11,7 @@ var direction: Vector2 = Vector2.RIGHT
 var behavior: Node = null
 var attack_damage: int = 1
 var max_health: int = 1
+var score: int
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var starting_position: Vector2 = global_position
@@ -25,6 +26,7 @@ func _ready() -> void:
 	if enemy_data:
 		max_health = enemy_data.max_health
 		attack_damage = enemy_data.attack_power
+		score = enemy_data.score
 		if enemy_data.behavior_script:
 			behavior = enemy_data.behavior_script.new()
 			add_child(behavior)
@@ -66,6 +68,7 @@ func die():
 	$HitboxComponent.monitoring = false
 	$HitboxComponent/CollisionShape2D.disabled = true
 	EventBus.enemy_hit.emit()
+	EventBus.enemy_died.emit(score)
 	
 	call_deferred("queue_free")
 	

@@ -22,5 +22,5 @@ func physics_update(delta: float) -> void:
 			var exit_pos = destination_pipe.exit_point.global_position
 
 			player.global_position = exit_pos
-			await player.play_animation("pipe", true) # TODO: fix animation not playing when exiting pipe
+			await player.play_animation("pipe", true)
 			state_machine.change_state(player.states.idle)

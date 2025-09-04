@@ -10,6 +10,7 @@ signal jump_pressed
 
 ### ENEMY ###
 signal enemy_hit
+signal enemy_died(score: int)
 
 ### WORLD ###
 # UI Signals

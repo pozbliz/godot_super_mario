@@ -3,6 +3,7 @@ extends Node
 
 var current_lives: int
 var max_lives: int = 3
+var score: int = 0
 var current_level: Node = null
 var next_level: int = 1
 var level1_scene: PackedScene = preload("res://world/level1.tscn")
@@ -20,6 +21,8 @@ func _ready() -> void: # TODO: add parallax background
 	EventBus.main_menu_opened.connect(exit_to_menu)
 	EventBus.player_died.connect(_on_player_died)
 	EventBus.level_finished.connect(_on_level_finished)
+	EventBus.enemy_died.connect(_on_enemy_died)
+	EventBus.coin_picked_up.connect(_on_coin_picked_up)
 	
 	new_game()
 	
@@ -72,6 +75,14 @@ func _on_player_died():
 		game_over()
 	else:
 		respawn_player()
+		
+func _on_enemy_died(enemy_score: int):
+	score += enemy_score
+	EventBus.score_changed.emit(score)
+	
+func _on_coin_picked_up(coin_score: int):
+	score += coin_score
+	EventBus.score_changed.emit(score)
 		
 func respawn_player():
 	player.global_position = current_level.get_player_spawn_position()
