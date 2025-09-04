@@ -23,6 +23,7 @@ func _ready() -> void: # TODO: add parallax background
 	EventBus.level_finished.connect(_on_level_finished)
 	EventBus.enemy_died.connect(_on_enemy_died)
 	EventBus.coin_picked_up.connect(_on_coin_picked_up)
+	EventBus.level_timeout.connect(_on_level_timeout)
 	
 	new_game()
 	
@@ -95,6 +96,9 @@ func _on_level_finished():
 	player.state_machine.set_process(false)
 	player.state_machine.set_physics_process(false)
 	next_level += 1
+	
+func _on_level_timeout():
+	game_over()
 	
 func game_over():
 	EventBus.game_over.emit()

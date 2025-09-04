@@ -11,23 +11,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbyyf")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 14.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 400
 
-[node name="ScoreText" type="Label" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ScoreText" type="Label" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 25
 text = "Score: "
 
-[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="TimerText" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 25
+text = "Time: "
+
+[node name="TimerLabel" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 25
 text = "0"
 
